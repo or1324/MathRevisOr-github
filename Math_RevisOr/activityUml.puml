@@ -1,0 +1,321 @@
+@startuml
+class or.nevet.orexercises.main.CreateMultiplayerRoomActivity {
+- ImageButton back
+- EditText numOfPlayers
+- CheckBox isPlayingInGroups
+- int playersNum
+- LearnedExercises exercises
+- LearnedExercise currentExercise
+- Users allUserEmails
+- Users allUserEmailsWithoutMine
+- GameFormatter formatter
+~ ActivityResultLauncher<Intent> readyUsersListActivityLauncher
+~ ActivityResultLauncher<Intent> showGameDataBeforeNextGameActivityLauncher
+# void onCreate(Bundle)
++ List<CharSequence> generateListItems()
++ ListFragment getListFragment()
++ View.OnClickListener getOnClickListener(String)
++ View.OnLongClickListener getOnLongClickListener(String)
+}
+class or.nevet.math_revisor.main.CustomExerciseCreationActivity {
++ AppCompatImageButton back
++ AppCompatImageButton writeExerciseAnswers
++ AppCompatTextView instructions
++ OrOneLineAutoSizeFocusableEditText numOfLinesLeft
++ OrOneLineAutoSizeFocusableEditText numOfLinesRight
++ OrOneLineAutoSizeFocusableEditText signEditText
+# void onCreate(Bundle)
++ void openExerciseCreationTable(char,int,int)
+}
+class or.nevet.math_revisor.main.MultiplayerActivity {
++ AppCompatImageButton back
++ Button joinRoom
++ Button createRoom
+# void onCreate(Bundle)
+}
+class or.nevet.orexercises.main.PracticeExerciseActivityWithScore {
+- TimerReference timerReference
+- AppCompatImageView internet
+- RunOnEachInterval runOnEachInterval
+- ConstraintLayout scoreLayout
+# void onCreate(Bundle)
+- void updateInternetState()
+# void onDestroy()
+# void createMathOperation(LearnedExercises)
++ void setScoreLayout(ConstraintLayout)
++ void setInternetImageView(AppCompatImageView)
++ ConstraintLayout getScoreLayout()
+}
+class or.nevet.math_revisor.main.AboutActivity {
++ AppCompatButton sms
++ AppCompatImageButton back
+- ActivityResultLauncher<String> smsPermissionResult
+# void onCreate(Bundle)
++ void tryToSendSMS()
++ void sendSMS()
+}
+class or.nevet.math_revisor.main.ManageCustomExercisesActivity {
++ AppCompatImageButton back
+- AppCompatImageButton addCustomExercise
+- ListFragment listFragment
+- ActivityResultLauncher<Intent> customExerciseCreationLauncher
+# void onCreate(Bundle)
++ List<CharSequence> generateListItems()
++ View.OnClickListener getOnClickListener(String)
++ View.OnLongClickListener getOnLongClickListener(String)
+- void removeExerciseAndSaveInCloudAndRefreshList(char)
++ ListFragment getListFragment()
+}
+abstract class or.nevet.orgeneralhelpers.music_related.MusicSubActivity {
++ void finish()
++ void onClick(View)
+}
+class or.nevet.math_revisor.main.SettingsActivity {
++ AppCompatImageButton back
++ AppCompatImageButton logout
++ AppCompatImageButton practiceMode
++ Spinner exercisesList
+# void onCreate(Bundle)
+}
+abstract class or.nevet.orexercises.main.LearningExerciseActivity {
++ void startDoingExercises(LearnedExercises)
+# {abstract}void createMathOperation(LearnedExercises)
+# void onDestroy()
++ boolean getIsInWaitingForUserToClickOnNextProcess()
+}
+class or.nevet.orexercises.main.TableActivity {
++ PhotoView photoView
++ AppCompatImageButton back
++ TextView welcome
+# void onCreate(Bundle)
+}
+class or.nevet.math_revisor.main.SignIn {
++ boolean isSignIn
++ OrOneLineAutoSizeFocusableEditText email
++ OrOneLineAutoSizeFocusableEditText password
++ OrOneLineAutoSizeFocusableEditText userName
++ AppCompatImageButton isSignInButton
++ AppCompatImageButton signInButton
++ ProgressBar progressBar
++ AppCompatTextView userNameText
++ AppCompatTextView resetPassword
+# void onCreate(Bundle)
+# void onDestroy()
+}
+abstract class or.nevet.orgeneralhelpers.graphical.activity_types.ButtonsListActivity {
++ {abstract}View.OnClickListener getOnClickListener(String)
++ {abstract}View.OnLongClickListener getOnLongClickListener(String)
+}
+class or.nevet.math_revisor.main.LeaderboardActivity {
++ AppCompatImageButton back
+# void onCreate(Bundle)
++ List<CharSequence> generateListItems()
++ ListFragment getListFragment()
+}
+abstract class or.nevet.orgeneralhelpers.graphical.activity_types.InteractiveMusicAlertDialogActivity {
+# void onDestroy()
++ {abstract}AlertDialog getAlertDialog()
+}
+class or.nevet.orexercises.main.JoinMultiplayerRoomActivity {
+- ImageButton back
+- Button join
+- EditText ownerEmailTextBox
+- RadioGroup orCoolSwitch
+- Spinner groupsDropDown
+- String ownerFormattedEmail
+- Users allUsersWithMe
+- Users allUsersWithoutMe
+- char exerciseSign
+- GameFormatter formatter
+~ ActivityResultLauncher<Intent> readyUsersListActivityLauncher
+~ ActivityResultLauncher<Intent> showGameDataBeforeNextGameActivityLauncher
+# void onCreate(Bundle)
+- int getSelectedGroupNumber()
+}
+class or.nevet.orexercises.main.ExerciseCreationTableActivity {
+- CustomExerciseTable table
++ AppCompatImageButton createExercise
+- ImageButton back
+# void onCreate(Bundle)
++ void switchToTableForEditing(int,int,char,Integer[],Integer[],Integer[][])
++ void switchToTableForCreating(int,int,char)
+- void showTableInsideMoveCutViewContainOr()
++ void saveExercise(int,int,char)
+- boolean checkForErrors(int,int)
+}
+class or.nevet.math_revisor.main.SplashScreen {
++ ProgressBar progressBar
+# void onCreate(Bundle)
+# void onPause()
+# void onResume()
++ void stopProgressBar()
++ void restartProgressBar()
++ ProgressBar getProgressBar()
+}
+class or.nevet.orexercises.main.MultiplayerExerciseActivity {
+- char exercisesSign
+- String myFormattedEmail
+- String ownerFormattedEmail
+- Users allEmailsWithMine
+- Users allEmailsWithoutMine
+- boolean isOwner
+- LearnedExercise currentExercise
+- LearnedExercises exercises
+- GameFormatter formatter
+- ExerciseEndingNotifier endingNotifier
+- ScoreHelper scoreHelper
+- GameOperations.UserWasRightInGameManager userWasRightInGameManager
+~ ActivityResultLauncher<Intent> showGameDataBeforeNextGameActivityLauncher
+# void getExercises()
+# void saveData()
+# void startDoingExercises(LearnedExercises)
+- LearnedExercises getLearnedExercisesFromOneLearnedExercise(LearnedExercise)
+# void moveToNextState()
+- void openGameDataScreen()
+- void startGame()
+}
+class or.nevet.math_revisor.main.MainActivity {
+~ long lastClickTime
++ ImageButton multiply_button
++ ImageButton divide_button
++ ImageButton stats
++ ImageButton settings
++ AppCompatImageButton leaderboard
++ AppCompatImageButton music
++ AppCompatTextView blessing
++ ConstraintLayout navigationBar
++ LottieAnimationView info
++ AppCompatImageButton customExercises
+- AlertDialog alertDialog
++ Button multiplayer
+# void onCreate(Bundle)
++ boolean isTooFastDoubleClickThatWillCauseDoubleOpening()
+# void onStart()
++ AppCompatImageButton getMusicButton()
+- void setGreeting()
++ void onBackPressed()
++ AlertDialog getAlertDialog()
+}
+class or.nevet.orexercises.main.PracticeExerciseActivityWithoutScore {
+# void createMathOperation(LearnedExercises)
+}
+abstract class or.nevet.orgeneralhelpers.graphical.activity_types.ListActivity {
+- ListFragment listFragment
+- boolean wasAlreadyCreated
+# void onStart()
+# void addItemToList(CharSequence)
++ {abstract}List<CharSequence> generateListItems()
++ {abstract}ListFragment getListFragment()
+}
+abstract class or.nevet.orgeneralhelpers.music_related.InteractiveMusicSubActivity {
+# void onResume()
++ {abstract}AppCompatImageButton getMusicButton()
+}
+abstract class or.nevet.orgeneralhelpers.music_related.InteractiveMusicActivity {
+# void onResume()
++ {abstract}AppCompatImageButton getMusicButton()
+}
+class or.nevet.orexercises.main.ExerciseService {
++ {static} boolean isRunning
++ View view
+~ PowerReceiver powerReceiver
++ {static} MediaPlayer mediaPlayer
++ {static} int numOfSeconds
+~ int seconds
++ EnhancedExerciseHelper exerciseHelper
+- TimerReference timerReference
+- RunOnEachInterval runOnEachInterval
+- ConstraintLayout background
+- AppCompatTextView errorView
+- AppCompatTextView timeView
+- AppCompatImageButton giveUp
+- ExerciseKeyboard keyboard
+- Thread notifyUserThread
+- boolean isGiveUp
++ void onAccessibilityEvent(AccessibilityEvent)
++ void onInterrupt()
+# void onServiceConnected()
++ void onDestroy()
++ void lockTheUserInExercise()
++ void exitScreen(View)
++ void answerExercise()
++ void nextAfterAnswerShown()
++ ConstraintLayout getBackground()
++ void setBackground(ConstraintLayout)
++ void setErrorView(AppCompatTextView)
++ ExerciseKeyboard getExerciseKeyboard()
++ boolean getIsInWaitingForUserToClickOnNextProcess()
++ void showAnswer(int)
++ void showExerciseScreen()
+- void showOverlayAndBlockTouches()
+- void blockTheUserFromEnteringOtherApps()
+- boolean waitUntilUserUnlocksScreen()
++ void notifyUser(String)
++ void help()
++ void stop()
++ void setTimeView(AppCompatTextView)
++ void startTimer()
++ void setGiveUp(AppCompatImageButton)
++ AppCompatImageButton getGiveUp()
+}
+abstract class or.nevet.orgeneralhelpers.music_related.MusicActivity {
+- ActivityState lastState
+- boolean canMoveToAnotherActivity
+# void onCreate(Bundle)
++ void finish()
+# void onPause()
+# void onStop()
++ void onAnotherActivityOpenedFromThisActivity()
++ boolean canMoveToAnotherActivity()
+# void onResume()
++ ActivityState getLastState()
++ void onBackPressed()
+}
+enum or.nevet.orgeneralhelpers.music_related.ActivityState {
++  Paused
++  Started
+}
+class or.nevet.math_revisor.main.StatisticsActivity {
++ ImageButton openTableMul
++ ImageButton openTableDiv
++ ImageButton back
++ AppCompatTextView percentsMul
++ AppCompatTextView percentsDiv
+# void onCreate(Bundle)
+- void showProgress()
+- String getLearnedPercents(int,LearnedExercises)
+}
+
+
+or.nevet.orgeneralhelpers.graphical.activity_types.ButtonsListActivity <|-- or.nevet.orexercises.main.CreateMultiplayerRoomActivity
+or.nevet.orgeneralhelpers.music_related.MusicSubActivity <|-- or.nevet.math_revisor.main.CustomExerciseCreationActivity
+or.nevet.orgeneralhelpers.music_related.MusicSubActivity <|-- or.nevet.math_revisor.main.MultiplayerActivity
+or.nevet.orexercises.main.LearningExerciseActivity <|-- or.nevet.orexercises.main.PracticeExerciseActivityWithScore
+or.nevet.orgeneralhelpers.music_related.MusicSubActivity <|-- or.nevet.math_revisor.main.AboutActivity
+or.nevet.orgeneralhelpers.graphical.activity_types.ButtonsListActivity <|-- or.nevet.math_revisor.main.ManageCustomExercisesActivity
+or.nevet.orgeneralhelpers.music_related.OnClickListener <|.. or.nevet.orgeneralhelpers.music_related.MusicSubActivity
+or.nevet.orgeneralhelpers.music_related.MusicActivity <|-- or.nevet.orgeneralhelpers.music_related.MusicSubActivity
+or.nevet.orgeneralhelpers.music_related.MusicSubActivity <|-- or.nevet.math_revisor.main.SettingsActivity
+or.nevet.orexercises.helpers.visual.ExerciseActivity <|-- or.nevet.orexercises.main.LearningExerciseActivity
+or.nevet.orgeneralhelpers.music_related.MusicSubActivity <|-- or.nevet.orexercises.main.TableActivity
+androidx.appcompat.app.AppCompatActivity <|-- or.nevet.math_revisor.main.SignIn
+or.nevet.orgeneralhelpers.graphical.activity_types.ListActivity <|-- or.nevet.orgeneralhelpers.graphical.activity_types.ButtonsListActivity
+or.nevet.orgeneralhelpers.graphical.activity_types.ListActivity <|-- or.nevet.math_revisor.main.LeaderboardActivity
+or.nevet.orgeneralhelpers.music_related.InteractiveMusicActivity <|-- or.nevet.orgeneralhelpers.graphical.activity_types.InteractiveMusicAlertDialogActivity
+or.nevet.orgeneralhelpers.music_related.MusicSubActivity <|-- or.nevet.orexercises.main.JoinMultiplayerRoomActivity
+or.nevet.orgeneralhelpers.music_related.MusicSubActivity <|-- or.nevet.orexercises.main.ExerciseCreationTableActivity
+or.nevet.orgeneralhelpers.graphical.graphical_concepts.LoadingComponent <|.. or.nevet.math_revisor.main.SplashScreen
+androidx.appcompat.app.AppCompatActivity <|-- or.nevet.math_revisor.main.SplashScreen
+or.nevet.orexercises.helpers.visual.ExerciseActivity <|-- or.nevet.orexercises.main.MultiplayerExerciseActivity
+or.nevet.orgeneralhelpers.graphical.activity_types.InteractiveMusicAlertDialogActivity <|-- or.nevet.math_revisor.main.MainActivity
+or.nevet.orexercises.main.LearningExerciseActivity <|-- or.nevet.orexercises.main.PracticeExerciseActivityWithoutScore
+or.nevet.orgeneralhelpers.music_related.MusicSubActivity <|-- or.nevet.orgeneralhelpers.graphical.activity_types.ListActivity
+or.nevet.orgeneralhelpers.music_related.InteractiveMusicThing <|.. or.nevet.orgeneralhelpers.music_related.InteractiveMusicSubActivity
+or.nevet.orgeneralhelpers.music_related.MusicSubActivity <|-- or.nevet.orgeneralhelpers.music_related.InteractiveMusicSubActivity
+or.nevet.orgeneralhelpers.music_related.InteractiveMusicThing <|.. or.nevet.orgeneralhelpers.music_related.InteractiveMusicActivity
+or.nevet.orgeneralhelpers.music_related.MusicActivity <|-- or.nevet.orgeneralhelpers.music_related.InteractiveMusicActivity
+or.nevet.orexercises.helpers.logic.interfaces.ExerciseScreen <|.. or.nevet.orexercises.main.ExerciseService
+android.accessibilityservice.AccessibilityService <|-- or.nevet.orexercises.main.ExerciseService
+androidx.appcompat.app.AppCompatActivity <|-- or.nevet.orgeneralhelpers.music_related.MusicActivity
+or.nevet.orgeneralhelpers.music_related.MusicSubActivity <|-- or.nevet.math_revisor.main.StatisticsActivity
+@enduml

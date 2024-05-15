@@ -1,0 +1,23 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://www.jitpack.io" }
+    }
+}
+rootProject.name = "Math_RevisOr"
+include ':app'
+include ':OrLibraries:OrHelpers:OrGeneralHelpers'
+include ':OrLibraries:OrHelpers:OrCloud'
+include ':OrLibraries:OrHelpers:OrUserManager'
+include ':OrLibraries:OrAppParts:OrExercises'
+include ':OrLibraries:OrAppParts:MultiplayerGameCloudLogic'
+include ':OrLibraries:OrAppParts:MathRevisOrUserManager'

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="or.nevet.math_revisor.main.CustomExerciseCreationActivity"
+    android:background="@color/app_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/guideline8"
+        app:layout_constraintBottom_toTopOf="@id/guideline5"
+        android:layoutDirection="ltr">
+
+        <ImageView
+            android:id="@+id/welcome2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:0.46825396825"
+            app:srcCompat="@drawable/create_exercise_welcome_image"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:scaleType="centerInside"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.24" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/navigation_bar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/guideline8"
+        android:padding="5dp">
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="0dp"
+            android:padding="12dp"
+            android:layout_height="match_parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:srcCompat="@drawable/back_button_image"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="centerInside"
+            android:background="#00000000" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.54" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.34" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.44" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.69" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/instructions"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="1sp"
+        app:layout_constraintBottom_toTopOf="@id/guideline9"
+        app:layout_constraintTop_toBottomOf="@id/guideline5"
+        android:text="Write the number of numbers that each side of exercise have:"
+        android:textColor="@color/black"
+        android:padding="5dp"
+        android:gravity="center"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/guideline9"
+        app:layout_constraintBottom_toTopOf="@id/guideline10">
+
+        <or.nevet.orgeneralhelpers.graphical.or_one_line_auto_size_edit_text.focusable.OrOneLineAutoSizeFocusableEditText
+            android:id="@+id/num_of_lefts"
+            android:layout_width="0dp"
+            app:orHint="left numbers"
+            app:orInputType="Numbers"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/num_of_rights"
+            android:layout_margin="5dp"/>
+
+
+        <or.nevet.orgeneralhelpers.graphical.or_one_line_auto_size_edit_text.focusable.OrOneLineAutoSizeFocusableEditText
+            android:id="@+id/num_of_rights"
+            android:layout_width="0dp"
+            app:orHint="right numbers"
+            app:orInputType="Numbers"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/num_of_lefts"
+            android:layout_margin="5dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <or.nevet.orgeneralhelpers.graphical.or_one_line_auto_size_edit_text.focusable.OrOneLineAutoSizeFocusableEditText
+        android:id="@+id/sign"
+        android:layout_width="0dp"
+        app:orHint="sign"
+        app:orInputType="Text"
+        android:gravity="center"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintTop_toBottomOf="@id/guideline10"
+        app:layout_constraintBottom_toTopOf="@id/guideline13"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="5dp"/>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/write_exercise_answers"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/write_exercise_numbers_button"
+        android:scaleType="centerInside"
+        android:background="#00000000"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline13"
+        app:layout_constraintBottom_toTopOf="@id/guideline11"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

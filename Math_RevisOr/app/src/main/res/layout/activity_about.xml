@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.AboutActivity"
+    android:background="@color/app_background"
+    android:layoutDirection="ltr">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/navigation_bar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/guideline8"
+        android:padding="5dp">
+
+        <ImageButton
+            android:id="@+id/back2"
+            android:layout_width="0dp"
+            android:padding="12dp"
+            android:layout_height="match_parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:srcCompat="@drawable/back_button_image"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="centerInside"
+            android:background="#00000000" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/guideline8"
+        app:layout_constraintBottom_toTopOf="@id/guideline5"
+        android:layoutDirection="ltr">
+
+        <ImageView
+            android:id="@+id/welcome2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:0.46825396825"
+            app:srcCompat="@drawable/about_screen_welcome_image"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:scaleType="centerInside"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/guideline5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/black">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/developer_details"
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                app:layout_constraintBottom_toTopOf="@id/guideline3"
+                app:layout_constraintTop_toBottomOf="@id/guideline5"
+                android:background="@drawable/cool_background">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.3" />
+
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.7" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="#80000000"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/guideline1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:textColor="@color/white"
+                        android:text="The developer of the app:"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        android:autoSizeTextType="uniform"
+                        app:autoSizeMinTextSize="1sp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintTop_toBottomOf="@id/guideline1"
+                    app:layout_constraintBottom_toTopOf="@id/guideline4"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:textColor="@color/white"
+                    android:text="Or Nevet"
+                    android:textStyle="bold|italic"
+                    android:padding="5dp"
+                    android:gravity="center"
+                    android:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="1sp"/>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="#80000000"
+                    app:layout_constraintTop_toBottomOf="@id/guideline4"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/sms"
+                        android:textColor="@color/white"
+                        android:text="@string/my_phone_number"
+                        android:padding="15dp"
+                        android:autoLink="phone"
+                        android:textColorLink="@color/teal_200"
+                        android:gravity="center"
+                        android:autoSizeTextType="uniform"
+                        app:autoSizeMinTextSize="1sp"/>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/sms"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintDimensionRatio="1:1"
+                        android:text="SMS"
+                        android:textColor="@color/white"
+                        android:padding="8dp"
+                        android:autoSizeTextType="uniform"
+                        android:textStyle="bold"
+                        android:background="@drawable/sms_background" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:textColor="@color/white"
+                android:padding="10dp"
+                android:gravity="center"
+                android:text="@string/app_tutorial" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:padding="10dp"
+                android:text="In this app, you can create exercises and revise them in multiple ways.\n\nThe definition of an exercise is 2 numbers that have a sign (one character that is not a number) between them and a numberic result. For example, this is an exercise:\n2*6=12\nAnother example:\n4%7=60\nAnother example:\n2a7=2\nAnd so on.\n\nYou can create every exercise collection that you want. The app comes built in with multiplication and division. You can create addition, subtraction, and generally whatever you want.\nIn order to create a set of exercises, you need to click on the 'custom exercise' button in the main page, and then click the plus button, write the amount of possible right numbers, the amount of possible left numbers, and the sign of the exercise. After that, click the 'write exercise numbers' button and you will see a table that you need to fill. The first row in the table that you fill is a set of different numbers that will show as the right numbers in each exercise.\nThe first column is a set of different numbers that will ahow as the left numbers in each exercise.\nAll of the other cells are the results of the exercises. For example, if the second cell in the first row is one, and the second cell in the first column is 2, and the sign is '&amp;', then the number that you will write at the second cell in the second row will represent the result of the exercise:\n1&amp;2\n\nIf one of your 'inner cells' in the table do not have an integer result, you can always just keep the cell empty and then this specific exercise will not be shown.\n\nIf you are not satisfied with the exercise that you created, you can always edit the exercise or remove it by clicking it for a few seconds in the 'Custom Exercise' screen. If you want to look at its statistics, you can do that too from there.\n\nAs I said before, the main goal of this app is to help you practice arithmetics (either well known arithmetic exercises, or exercises that you invent).\n\nIn order to do so, the app offers you a variety of tools.\n\nThe first one is to have an exercise show up every time that you open your phone. You can enable this option in the app settings. If there is an exercise that you do not know, you can always click the white flag button to give up. You can choose the exercise that will show up in the app settings.\n\nThe second one is to exercise alone using a mechanism that was designed specificly for learning and revising the exercises in the best way possible. You can see the statistics for your knowledge in each of the exercises that you have. When you are wrong in one exercise you enter a 'learning process' which shows you specific exercises in a specific order that will help you revise the exercise that you failed. You also have a leaderboard that will show you how much right exercises do you have in relation to the other users.\n\nThe third one is to practice your exercises together with your friends. You can do that by entering a multiplayer game with them, either in groups or all vs all. At the end of the game you will get a leaderboard, that if you will click and hold for a few seconds one of its rows, you will hear a motivating complement about your relation with the clicked rival." />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

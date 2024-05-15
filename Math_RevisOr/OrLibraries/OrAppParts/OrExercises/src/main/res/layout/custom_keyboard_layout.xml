@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    android:id="@+id/keyboard_background"
+    android:background="@drawable/keyboard_background"
+    android:visibility="visible"
+    android:theme="@style/Theme.Math_RevisOr">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:id="@+id/keyboard"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/row1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/row2"
+            android:layoutDirection="ltr">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/col11"
+                android:layout_width="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                android:padding="5dp"
+                android:src="@drawable/button_1"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:background="#00000000"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/col12"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/col12"
+                android:layout_width="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                android:padding="5dp"
+                android:src="@drawable/button_2"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:background="#00000000"
+                app:layout_constraintLeft_toRightOf="@id/col11"
+                app:layout_constraintRight_toLeftOf="@id/col13"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/col13"
+                android:layout_width="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                android:padding="5dp"
+                android:src="@drawable/button_3"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:background="#00000000"
+                app:layout_constraintLeft_toRightOf="@id/col12"
+                app:layout_constraintRight_toRightOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/row2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/row1"
+            app:layout_constraintBottom_toTopOf="@id/row3"
+            android:layoutDirection="ltr">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/col21"
+                android:layout_width="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                android:padding="5dp"
+                android:src="@drawable/button_4"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:background="#00000000"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/col22"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/col22"
+                android:layout_width="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                android:padding="5dp"
+                android:src="@drawable/button_5"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:background="#00000000"
+                app:layout_constraintLeft_toRightOf="@id/col21"
+                app:layout_constraintRight_toLeftOf="@id/col23"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/col23"
+                android:layout_width="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                android:padding="5dp"
+                android:src="@drawable/button_6"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:background="#00000000"
+                app:layout_constraintLeft_toRightOf="@id/col22"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/row3"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/row2"
+            app:layout_constraintBottom_toTopOf="@id/row4"
+            android:layoutDirection="ltr">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/col31"
+                android:layout_width="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                android:padding="5dp"
+                android:src="@drawable/button_7"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:background="#00000000"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/col32"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/col32"
+                android:layout_width="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                android:padding="5dp"
+                android:src="@drawable/button_8"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:background="#00000000"
+                app:layout_constraintLeft_toRightOf="@id/col31"
+                app:layout_constraintRight_toLeftOf="@id/col33"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/col33"
+                android:layout_width="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                android:padding="5dp"
+                android:src="@drawable/button_9"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:background="#00000000"
+                app:layout_constraintLeft_toRightOf="@id/col32"
+                app:layout_constraintRight_toRightOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/row4"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/row3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layoutDirection="ltr">
+
+            <View
+                android:id="@+id/empty"
+                android:layout_width="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                android:padding="5dp"
+                android:layout_height="match_parent"
+                android:visibility="invisible"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/col42"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/col42"
+                android:layout_width="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                android:padding="5dp"
+                android:src="@drawable/button_0"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:background="#00000000"
+                app:layout_constraintLeft_toRightOf="@id/empty"
+                app:layout_constraintRight_toLeftOf="@id/continue_to_next"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/continue_to_next"
+                android:layout_width="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                android:padding="5dp"
+                android:src="@drawable/continue_to_next"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:background="#00000000"
+                app:layout_constraintLeft_toRightOf="@id/col42"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

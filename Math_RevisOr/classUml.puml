@@ -1,0 +1,1739 @@
+@startuml
+class or.nevet.orexercises.main.CreateMultiplayerRoomActivity {
+- ImageButton back
+- EditText numOfPlayers
+- CheckBox isPlayingInGroups
+- int playersNum
+- LearnedExercises exercises
+- LearnedExercise currentExercise
+- Users allUserEmails
+- Users allUserEmailsWithoutMine
+- GameFormatter formatter
+~ ActivityResultLauncher<Intent> readyUsersListActivityLauncher
+~ ActivityResultLauncher<Intent> showGameDataBeforeNextGameActivityLauncher
+# void onCreate(Bundle)
++ List<CharSequence> generateListItems()
++ ListFragment getListFragment()
++ View.OnClickListener getOnClickListener(String)
++ View.OnLongClickListener getOnLongClickListener(String)
+}
+class or.nevet.math_revisor.main.CustomExerciseCreationActivity {
++ AppCompatImageButton back
++ AppCompatImageButton writeExerciseAnswers
++ AppCompatTextView instructions
++ OrOneLineAutoSizeFocusableEditText numOfLinesLeft
++ OrOneLineAutoSizeFocusableEditText numOfLinesRight
++ OrOneLineAutoSizeFocusableEditText signEditText
+# void onCreate(Bundle)
++ void openExerciseCreationTable(char,int,int)
+}
+class or.nevet.orgeneralhelpers.constants.GreetingConstants {
++ {static} String goodMorning
++ {static} String goodNight
++ {static} String goodNoon
++ {static} String goodAfternoon
+}
+class or.nevet.orexercises.helpers.visual.table_painter.TablePainter {
+- LearnedExercises exercises
++ Bitmap paintTableImage(Context)
+}
+class or.nevet.math_revisor.main.AboutActivity {
++ AppCompatButton sms
++ AppCompatImageButton back
+- ActivityResultLauncher<String> smsPermissionResult
+# void onCreate(Bundle)
++ void tryToSendSMS()
++ void sendSMS()
+}
+abstract class or.nevet.orexercises.main.LearningExerciseActivity {
++ void startDoingExercises(LearnedExercises)
+# {abstract}void createMathOperation(LearnedExercises)
+# void onDestroy()
++ boolean getIsInWaitingForUserToClickOnNextProcess()
+}
+class or.nevet.orexercises.helpers.logic.data_objects.exceptions.StopExerciseException {
++ String getMessage()
+}
+class or.nevet.orexercises.main.TableActivity {
++ PhotoView photoView
++ AppCompatImageButton back
++ TextView welcome
+# void onCreate(Bundle)
+}
+class or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.ExercisesIterator {
++ {static} void iterateAllCellsByOrder(int,int,TableCellIteration)
++ {static} void iterateExistingExercisesNoOrder(HashMap<String,LearnedExercise>,ExerciseIteration)
++ {static} void iterateExistingIndexesNoOrder(HashMap<String,LearnedExercise>,TableCellIteration)
+}
+interface or.nevet.orexercises.helpers.logic.interfaces.ExerciseScreen {
+~ void exitScreen(View)
+~ void answerExercise()
+~ void nextAfterAnswerShown()
+~ ConstraintLayout getBackground()
+~ void setBackground(ConstraintLayout)
+~ void startTimer()
+~ void showAnswer(int)
+~ void setGiveUp(AppCompatImageButton)
+~ AppCompatImageButton getGiveUp()
+~ ExerciseKeyboard getExerciseKeyboard()
+~ boolean getIsInWaitingForUserToClickOnNextProcess()
+}
+class or.nevet.math_revisor.main.SignIn {
++ boolean isSignIn
++ OrOneLineAutoSizeFocusableEditText email
++ OrOneLineAutoSizeFocusableEditText password
++ OrOneLineAutoSizeFocusableEditText userName
++ AppCompatImageButton isSignInButton
++ AppCompatImageButton signInButton
++ ProgressBar progressBar
++ AppCompatTextView userNameText
++ AppCompatTextView resetPassword
+# void onCreate(Bundle)
+# void onDestroy()
+}
+abstract class or.nevet.orexercises.helpers.logic.exercise_mechanism.high_level.math_operations.MathOperation {
+- ExerciseActivity activity
+- EnhancedExerciseHelper exerciseHelper
+- LearnedExercises exercises
+- boolean wasTheLastAnswerRight
+- ExerciseState state
+# EnhancedExerciseHelper getExerciseHelper()
+# {abstract}EnhancedExerciseHelper createExerciseHelper()
++ ExerciseActivity getExerciseActivity()
++ void startFirstExercise()
+# void showExercise()
+# void startNextExercise()
+# {abstract}void createFirstExercise()
+# void createNextExercise()
++ boolean moveToNextState(Runnable)
+# boolean moveToNextExercise(Runnable)
+# void userWasRight(Runnable)
++ boolean wasTheLastAnswerRight()
+# void userWasWrong(Runnable)
++ char getExerciseSign()
++ LearnedExercises getExercises()
+}
+enum or.nevet.orexercises.helpers.logic.exercise_mechanism.high_level.math_operations.ExerciseState {
++  Executing
++  SignalsRight
+}
+class or.nevet.orexercises.helpers.logic.data_objects.exercise_objects.learned_exercise.LearnedExercise {
+- int leftNumber
+- int result
+- int numOfLearned
++ {static} Creator<LearnedExercise> CREATOR
++ int getLeftNumber()
++ void exerciseWasSucceeded()
++ int getNumOfLearned()
++ int getRightNumber()
++ boolean isLearned()
++ int getResult()
++ boolean equals(Object)
++ int hashCode()
++ int describeContents()
++ void writeToParcel(Parcel,int)
+}
+class or.nevet.orgeneralhelpers.constants.UserMessagesConstants {
++ {static} String areYouSureThatYouWantToRemoveThisExercise
++ {static} String areYouSureThatYouWantSoMuchExercises
++ {static} String chooseAnOption
++ {static} String allFieldsMustBeFilled
++ {static} String signNeedsToBeOneChar
++ {static} String signCanNotBeNumber
++ {static} String thisSignAlreadyExists
++ {static} String exercisesAddedSuccessfully
++ {static} String canNotHaveMultipleEqualLeftNumbers
++ {static} String canNotHaveMultipleEqualRightNumbers
++ {static} String smsText
++ {static} String thereWasAnError
++ {static} String passwordResetSucceeded
++ {static} String forgotAfterAddingExerciseActivity
++ {static} String forgotAfterAddingBlockingMethod
++ {static} String forgotAfterAddingExerciseState
++ {static} String notEnoughSpaceForTimer
++ {static} String wrongAnswer
++ {static} String haveToEnterUserName
++ {static} String haveToEnterPassword
++ {static} String haveToEnterEmail
++ {static} String userNameAlreadyExists
++ {static} String accountUsed
++ {static} String wrongCredential
++ {static} String wrongEmail
++ {static} String weakPassword
++ {static} String theUserIsNotSignedInSoImpossibleToUploadScore
++ {static} String roomOwnerStartedAnotherGame
++ {static} String doesNotSupportTTS
++ {static} String calledShowBeforeInitView
++ {static} String currentUserEmailWasNotInArray
++ {static} String allLeftAndRightNumbersMustBeFilled
++ {static} String youMustFillAtLeastOneAnswer
++ {static} String ttsNotReady
++ {static} String allowAccessibilityService
++ {static} String emailNotValid
++ {static} String emailNotValidInSignIn
++ {static} String roomDoesNotExist
++ {static} String usernameNotValid
++ {static} String theNumberIsTooBig
++ {static} String doYouWantToSendMessage
++ {static} String draftSMSText
++ {static} String userDoesNotExistInStorage
++ {static} String youHaveNoInternet
++ {static} String notSignedUp
++ {static} String youAreNotSignedUp
+}
+class or.nevet.orcloud.AuthHelper {
+- {static} FirebaseAuth auth
++ {static} void signInNewUser(String,String)
++ {static} void logInExistingUser(String,String)
++ {static} void signOutCurrentUser()
++ {static} boolean isTheCurrentUserLoggedIn()
++ {static} void sendPasswordResetEmail(String)
+}
+class or.nevet.orexercises.helpers.visual.multiplayer_list_activities.ReadyUsersListActivity {
+- ReadyUsersMethod method
+- ImageButton back
+- AppCompatImageView title
+# void onCreate(Bundle)
++ List<CharSequence> generateListItems()
+- void setGameTitle()
+- void setCreationStartTitle()
+- void setMatchingEndTitle()
+- void closeActivityBecauseAllUsersAreReady(Serializable,Users)
+- void closeActivityForJoiningUserBecauseRoomDoesNotExist()
++ ListFragment getListFragment()
++ void onBackPressed()
+}
+class or.nevet.orgeneralhelpers.graphical.ConstraintLayoutAnimationHelper {
+~ ConstraintLayout layout
++ void animateConnectionLeftToRightAndRunnableChanges(int,int,Runnable)
++ void animateConnectionLeftToLeftAndRunnableChanges(int,int,Runnable)
+}
+class or.nevet.orexercises.main.JoinMultiplayerRoomActivity {
+- ImageButton back
+- Button join
+- EditText ownerEmailTextBox
+- RadioGroup orCoolSwitch
+- Spinner groupsDropDown
+- String ownerFormattedEmail
+- Users allUsersWithMe
+- Users allUsersWithoutMe
+- char exerciseSign
+- GameFormatter formatter
+~ ActivityResultLauncher<Intent> readyUsersListActivityLauncher
+~ ActivityResultLauncher<Intent> showGameDataBeforeNextGameActivityLauncher
+# void onCreate(Bundle)
+- int getSelectedGroupNumber()
+}
+class or.nevet.orexercises.helpers.visual.multiplayer_formatting.AllVSAllFormatter {
++ String formatRightUser(User)
++ String[] formatGameDataReadyUsersInBeginning(Users)
++ String formatReadyUser(User)
++ CharSequence[] formatScores(GameUsers)
++ CharSequence[] formatScoresAtEnding(GameUsers)
++ String formatIdentifier(String)
++ String getMyFormattedIdentifier()
++ String getWinnerLeaderboardName(GameUsers)
++ String getMyLeaderboardName()
++ boolean isThereATie(GameUsers)
++ boolean isMyLeaderboardScoreBetterThanTheScoreOf(String,GameUsers)
+- CharSequence[] formatAndSortUsersWithScores(GameUser[])
+}
+class or.nevet.orexercises.main.ExerciseCreationTableActivity {
+- CustomExerciseTable table
++ AppCompatImageButton createExercise
+- ImageButton back
+# void onCreate(Bundle)
++ void switchToTableForEditing(int,int,char,Integer[],Integer[],Integer[][])
++ void switchToTableForCreating(int,int,char)
+- void showTableInsideMoveCutViewContainOr()
++ void saveExercise(int,int,char)
+- boolean checkForErrors(int,int)
+}
+class or.nevet.mathrevisorusermanager.UserObjectConverter {
++ {static} UserObject convert(or.nevet.orusermanager.UserObject)
+}
+class or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.ConvertBetweenLearnedExercisesAndFireStore {
++ {static} HashMap<String,LearnedExercisesData> convertExercisesMapToFirestore(Map<String,LearnedExercises>)
++ {static} LearnedExercisesData convertExercisesToFirestore(LearnedExercises)
++ {static} LearnedExercises convertFirestoreToExercises(LearnedExercisesData)
+}
+abstract class or.nevet.orexercises.helpers.logic.multiplayer_method_objects.ReadyUsersMethod {
+- GameFormatter formatter
++ {abstract}Serializable runMethod(OrReadyUsersListener)
++ String formatReadyUser(User)
+}
+class or.nevet.mathrevisorusermanager.learned_exercises_data.LearnedExerciseData {
++ int leftNumber
++ int rightNumber
++ int result
++ int numOfLearned
+}
+class or.nevet.mathrevisorusermanager.User {
+- String email
+- String userName
+- long score
+- HashMap<String,LearnedExercisesData> learnedExercises
++ String getEmail()
++ HashMap<String,LearnedExercisesData> getLearnedExercises()
++ long getScore()
++ String getUserName()
++ void setLearnedExercises(HashMap<String,LearnedExercisesData>)
++ void setScore(long)
+}
+class or.nevet.orgeneralhelpers.constants.GeneralExerciseConstants {
++ {static} int maxNum
++ {static} char divisionSign
++ {static} char multiplicationSign
++ {static} Character[] signsUsedByTheAppByDefault
++ {static} int timeOfQuestion
++ {static} String exercisesIndexesSplitter
++ {static} String exercisesExtrasName
++ {static} String usersInMultiplayerGameExtrasName
++ {static} String usersWithoutMeInMultiplayerGameExtrasName
++ {static} String isMultiplayerGameOwnerExtrasName
++ {static} String ownerEmailInMultiplayerGameExtrasName
++ {static} String readyUsersReturnedValueMultiplayerGameExtrasName
++ {static} String readyUsersAllUsersMultiplayerGameExtrasName
++ {static} String exercisesSignInMultiplayerGameExtrasName
++ {static} String readyUsersMethodExtrasName
++ {static} String gameDataMethodExtrasName
++ {static} String endGameUsersAndTheirScoreExtrasName
++ {static} String currentExerciseMultiplayerGameExtrasName
++ {static} String manageCustomExercisesNewExerciseSignExtra
++ {static} String formatterInMultiplayerGameExtrasName
++ {static} String isExerciseEditingExtrasName
++ {static} String exerciseSignExtrasName
++ {static} String numOfRowsExtrasName
++ {static} String numOfColumnsExtrasName
++ {static} int readyUsersListActivityResultCode
++ {static} int showGameDataBeforeNextGameActivityResultCode
++ {static} int endGameActivityResultCode
++ {static} int customExerciseCreationResultCode
++ {static} char defaultExerciseSign
++ {static} int numberOfExercisesInMultiplayerGame
+}
+class or.nevet.mathrevisorusermanager.UserObject {
+- User user
++ long getScore()
++ String getUserName()
++ String getUserEmail()
++ HashMap<String,LearnedExercisesData> getLearnedExercises()
+}
+class or.nevet.orgeneralhelpers.CommonArrayAlgorithms {
++ {static} boolean arrayContainsElement(Object[],Object)
++ {static} boolean arrayContainsAllArrayValues(Object[],Object[])
++ {static} boolean charArrayContainsAllStringCharacters(char[],String)
+}
+class or.nevet.orexercises.helpers.visual.table_painter.TableLayoutPainter {
+- Point[][] grid
+- int tableHeight
+- int tableWidth
+- double cellSize
+- int numOfRows
+- int numOfColumns
++ int getGridNumOfHorizontalLines()
++ int getGridNumOfVerticalLines()
++ int getNumOfRows()
++ int getNumOfColumns()
++ double getCellSize()
++ Bitmap createTableLayout()
+- Bitmap createGridBackground(int,int)
+- Paint createTableLayoutPaint()
++ Point getTopLeftPositionInImageOfCellInIndexes(int,int)
++ Point getBottomLeftPositionInImageOfCellInIndexes(int,int)
+}
+class or.nevet.orcloud.listener_stoppers.ValueEventListenerStopper {
+~ DatabaseReference listenerReference
+~ ValueEventListener listener
++ void removeListener()
+}
+class or.nevet.orexercises.helpers.logic.data_objects.multiplayer_game.UsersDataForPresentation {
+- Users usersDataToPresent
+- boolean wasTheGameEnded
++ boolean wasTheGameEnded()
++ Users getUsersToPresent()
+}
+interface or.nevet.orcloud.cloud_listeners.OrChildAddedListener {
+~ void onChildAdded(RealtimeField)
+}
+class or.nevet.orgeneralhelpers.graphical.table_views.TableTextViewStylist {
+- {static} Typeface fontTypeface
+- int cellSize
++ void style(TextView)
+}
+class or.nevet.multiplayergame.data_objects.User {
+- String identifier
++ String getIdentifier()
+}
+interface or.nevet.orgeneralhelpers.tts.TTSListener {
+~ void onFinish(boolean)
+}
+class or.nevet.orgeneralhelpers.graphical.recycler_view.RecyclOrViewAdaptOr {
+~ ListActivity activity
+~ List<CharSequence> texts
+~ int recyclerViewRowId
+~ int recyclerViewTextViewId
++ ViewHoldOr onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(ViewHoldOr,int)
++ int getItemCount()
+}
+class or.nevet.orgeneralhelpers.graphical.recycler_view.RecyclOrViewAdaptOr.ViewHoldOr {
+~ TextView listRow
+}
+class or.nevet.orusermanager.User {
+- String email
++ String getEmail()
+}
+class or.nevet.math_revisor.helpers.Permissions {
++ {static} void checkForDrawPermissions(Context)
++ {static} AlertDialog checkForAccessibilityPermissions(Context)
++ {static} void askForPermission(String,Activity,ActivityResultLauncher<String>)
+- {static} boolean isAccessibilityServiceEnabled(Context,Class<? extends AccessibilityService>)
+}
+class or.nevet.orexercises.helpers.visual.multiplayer_list_activities.ShowGameDataBeforeNextGame {
+- GameDataMethod method
+- ImageButton nextExercise
+- ImageButton back
+- AppCompatImageView title
+- boolean clicked
+# void onCreate(Bundle)
++ void onBackPressed()
++ List<CharSequence> generateListItems()
+- void setGameTitle()
+- void setMatchingTitle()
++ ListFragment getListFragment()
+}
+class or.nevet.orexercises.main.PracticeExerciseActivityWithoutScore {
+# void createMathOperation(LearnedExercises)
+}
+interface or.nevet.orcloud.cloud_listeners.OrNChildrenAddedListener {
+~ void onAllAdded(RealtimeField[])
+~ void onChildAdded(RealtimeField)
+}
+abstract class or.nevet.orgeneralhelpers.music_related.InteractiveMusicActivity {
+# void onResume()
++ {abstract}AppCompatImageButton getMusicButton()
+}
+interface or.nevet.orcloud.cloud_listeners.OrValueChangedListener {
+~ void onChanged(RealtimeField)
+}
+class or.nevet.orgeneralhelpers.graphical.or_one_line_auto_size_edit_text.focusable.OrOneLineAutoSizeFocusableEditText {
+# void onFocusChanged(boolean,int,Rect)
+- void forceShowingKeyboard()
+}
+class or.nevet.orexercises.main.ExerciseService {
++ {static} boolean isRunning
++ View view
+~ PowerReceiver powerReceiver
++ {static} MediaPlayer mediaPlayer
++ {static} int numOfSeconds
+~ int seconds
++ EnhancedExerciseHelper exerciseHelper
+- TimerReference timerReference
+- RunOnEachInterval runOnEachInterval
+- ConstraintLayout background
+- AppCompatTextView errorView
+- AppCompatTextView timeView
+- AppCompatImageButton giveUp
+- ExerciseKeyboard keyboard
+- Thread notifyUserThread
+- boolean isGiveUp
++ void onAccessibilityEvent(AccessibilityEvent)
++ void onInterrupt()
+# void onServiceConnected()
++ void onDestroy()
++ void lockTheUserInExercise()
++ void exitScreen(View)
++ void answerExercise()
++ void nextAfterAnswerShown()
++ ConstraintLayout getBackground()
++ void setBackground(ConstraintLayout)
++ void setErrorView(AppCompatTextView)
++ ExerciseKeyboard getExerciseKeyboard()
++ boolean getIsInWaitingForUserToClickOnNextProcess()
++ void showAnswer(int)
++ void showExerciseScreen()
+- void showOverlayAndBlockTouches()
+- void blockTheUserFromEnteringOtherApps()
+- boolean waitUntilUserUnlocksScreen()
++ void notifyUser(String)
++ void help()
++ void stop()
++ void setTimeView(AppCompatTextView)
++ void startTimer()
++ void setGiveUp(AppCompatImageButton)
++ AppCompatImageButton getGiveUp()
+}
+class or.nevet.mathrevisorusermanager.Settings {
+- boolean isLockScreenModeOn
+- char lockScreenExercisesSign
++ char getLockScreenExercisesSign()
++ boolean isLockScreenModeOn()
++ void setLockScreenExercisesSign(char)
++ void setLockScreenModeOn(boolean)
+}
+class or.nevet.math_revisor.main.StatisticsActivity {
++ ImageButton openTableMul
++ ImageButton openTableDiv
++ ImageButton back
++ AppCompatTextView percentsMul
++ AppCompatTextView percentsDiv
+# void onCreate(Bundle)
+- void showProgress()
+- String getLearnedPercents(int,LearnedExercises)
+}
+class or.nevet.orgeneralhelpers.music_related.ActivityOpeningHelper {
+- {static} boolean appActivityOpens
+- {static} Class<? extends MusicActivity> thisActivityIsClosingButOnResumeWillBeCalledSoon
++ {static} void openActivity(MusicActivity,Class<? extends Activity>,Bundle)
++ {static} void openActivityAndKillMe(MusicActivity,Class<? extends Activity>,Bundle,boolean)
++ {static} void openActivityForResult(MusicActivity,Class<? extends Activity>,Bundle,ActivityResultLauncher<Intent>)
+~ {static} void onSubActivityFinished()
+~ {static} void onActivityOpened(MusicActivity)
+~ {static} void onActivityPaused()
+}
+class or.nevet.orgeneralhelpers.HashSetHelper {
++ T getRandomHashSetItem(HashSet<T>)
+}
+class or.nevet.orexercises.helpers.logic.exercise_mechanism.high_level.PowerReceiver {
+~ ExerciseService exerciseService
++ void onReceive(Context,Intent)
+- boolean getIsPracticeModeOn(Context)
+}
+class or.nevet.orusermanager.SettingsObject {
+- Settings settings
++ T getProperty(String)
+}
+class or.nevet.math_revisor.main.ManageCustomExercisesActivity {
++ AppCompatImageButton back
+- AppCompatImageButton addCustomExercise
+- ListFragment listFragment
+- ActivityResultLauncher<Intent> customExerciseCreationLauncher
+# void onCreate(Bundle)
++ List<CharSequence> generateListItems()
++ View.OnClickListener getOnClickListener(String)
++ View.OnLongClickListener getOnLongClickListener(String)
+- void removeExerciseAndSaveInCloudAndRefreshList(char)
++ ListFragment getListFragment()
+}
+class or.nevet.orgeneralhelpers.graphical.or_one_line_auto_size_edit_text.unfocusable.OrOneLineAutoSizeUnfocusableEditText {
+# void init(int)
+# void onTextChanged(CharSequence,int,int,int)
+# void onFocusChanged(boolean,int,Rect)
++ void emulateNoFocus()
++ void emulateUserFocus()
+- void scrollToEditTextEnd()
+}
+class or.nevet.orgeneralhelpers.graphical.recycler_view.RecyclOrView {
+}
+class or.nevet.orgeneralhelpers.graphical.table_views.TextTable {
+- String[][] texts
+# String getValueAtCell(int,int)
+# TextView createTableCell(int,int)
+}
+class or.nevet.mathrevisorusermanager.SettingsManager {
++ {static} SettingsObject getSettingsObject()
++ {static} void restoreSettings(Context)
++ {static} void saveLockScreenExerciseSign(char,Context)
++ {static} void switchIsLockScreenModeOnAndSave(Context)
+- {static} SettingsObject convertGeneralSettingsToSettings(or.nevet.orusermanager.SettingsObject)
+}
+interface or.nevet.orexercises.helpers.logic.interfaces.TableCellIteration {
+~ void onIteration(int,int)
+}
+class or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.LearnedExercisesIndexesHelper {
++ {static} String getIndexesStringFromIndexes(int,int)
++ {static} Map.Entry<Integer,Integer> getIndexesFromStringIndexes(String)
+}
+class or.nevet.orgeneralhelpers.tts.OrTTS {
+- {static} TextToSpeech tts
+- {static} boolean initializing
+- {static} void initializeTTS(Context,TTSListener)
+- {static} void init()
++ {static} void createTTS(Context,TTSListener)
++ {static} TTSHelper getTTSHelper()
+}
+class or.nevet.orgeneralhelpers.tts.OrTTS.TTSHelper {
+~ TextToSpeech tts
++ void readText(String)
+}
+class or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.learned_exercise_manager.LearnedExerciseManager {
+- {static} LearnedDivExercises generateNewLearnedDivExercises()
+- {static} LearnedMulExercises generateNewLearnedMulExercises()
++ {static} LearnedDivExercises getLearnedDivExercises(Context)
++ {static} LearnedMulExercises getLearnedMulExercises(Context)
++ {static} LearnedExercise getSavedLastExercise(Context,LearnedExercises)
++ {static} LearnedExercise getSavedRevisingExercise(Context,LearnedExercises)
++ {static} int getSavedLearningProcess(Context,char)
++ {static} void saveLastExercise(Context,char,LearnedExercise)
++ {static} void saveRevisingExercise(Context,char,LearnedExercise)
++ {static} void saveLearningProcess(Context,char,int)
++ {static} Character[] getAllSavedSigns(Context)
++ {static} void removeSpecificLearnedExercisesFromStorage(Context,char)
++ {static} Character[] getCustomExercisesSavedSigns(Context)
++ {static} Character[] getSignsThatAreUsedByTheAppByDefault()
++ {static} void saveAllLearnedExercisesArray(Context,LearnedExercises[])
++ {static} LearnedExercises[] getAllSavedUserCreatedLearnedExercisesArray(Context)
++ {static} LearnedExercises getSpecificSavedLearnedExercisesBySign(char,Context)
++ {static} void saveSpecificLearnedExercises(Context,LearnedExercises)
++ {static} HashMap<String,LearnedExercises> getMapOfLearnedExercisesUsedByTheApp()
+}
+class or.nevet.orexercises.helpers.logic.multiplayer_method_objects.MultiplayerOwnerGameDataMethod {
+- long score
+- Users allUsersWithMe
++ UsersDataForPresentation runMethod()
+}
+class or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.exercise_helpers.EnhancedExerciseHelperWithLearningAndScoreMathOperationActivity {
+~ LeaderboardScoreHelper scoreHelper
++ void exerciseWasSucceeded()
++ void wrong()
+}
+class or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.learned_exercise_manager.RevisingExerciseFileHelper {
+# String getFileNameFromExerciseSign(char)
+}
+class or.nevet.orexercises.helpers.logic.multiplayer_method_objects.MultiplayerOtherUserReadyMethod {
+- Users allUsersWithMe
+- String myFormattedEmail
+- String ownerFormattedEmail
++ Serializable runMethod(OrReadyUsersListener)
+}
+class or.nevet.mathrevisorusermanager.UserManager {
++ {static} void signInNewUser(String,String,String,HashMap<String,LearnedExercisesData>,Context)
++ {static} void logInExistingUser(String,String,Context)
++ {static} void signOutAndRemoveUserFromStorage(Context)
++ {static} boolean isTheCurrentUserSignedIn()
++ {static} void restoreUser(Context)
++ {static} void removeUserFromMemory()
++ {static} LinkedList<UserObject> getAllUsers()
++ {static} void uploadUser()
++ {static} boolean checkIfUserNameExists(String)
++ {static} void updateAndSaveScore(long,Context)
++ {static} void updateAndSaveLearnedExercisesMapInStorage(HashMap<String,LearnedExercisesData>,Context)
++ {static} void saveLearnedExercisesInRuntimeAndInStorage(String,LearnedExercisesData,Context)
++ {static} void removeLearnedExercisesOnRuntimeAndFromStorage(String,Context)
++ {static} UserObject getCurrentUserObject(Context)
++ {static} void sendPasswordResetEmail(String)
+}
+interface or.nevet.multiplayergame.game_listeners.OrReadyUsersListener {
+~ void onUserReady(User)
+~ void onAllUsersReady(Users)
+}
+class or.nevet.orgeneralhelpers.background_running_related.BackgroundRunningHelper {
++ {static} Thread runCodeInBackgroundAsync(Runnable)
++ {static} void runCodeOnUiThread(Runnable)
++ {static} void runCodeOnUiThreadAsync(Runnable)
++ {static} Thread runOnUiAfterSomeTimeAsync(Runnable,long)
++ {static} boolean isOnUiThread()
++ {static} void runCodeOnUiThreadSync(Runnable)
+}
+class or.nevet.orcloud.listener_stoppers.ChildEventListenerStopper {
+~ DatabaseReference listenerReference
+~ ChildEventListener listener
++ void removeListener()
+}
+class or.nevet.orexercises.helpers.visual.exercise_keyboard.KeyboardFunctionality {
+- boolean isPressingDelete
+- Thread deleteThread
+- boolean areButtonsEnabled
+- View keyboardView
++ void registerOnClick()
+- void dealWithLongPressDelete(MotionEvent)
+- void waitHalfSecondAndThenStartDeleting()
+- void startDeleting()
+- void write(String)
+- void delete()
++ void disableButtons()
++ void enableButtons()
+}
+class or.nevet.orgeneralhelpers.background_running_related.TimersContainer {
+- HashMap<Integer,Timer> timers
+- HashSet<Integer> allowedIds
+- int numOfIds
+~ TimerReference addNewTimer(Timer)
+~ void stopTimer(TimerReference)
+~ void stopAll()
+}
+class or.nevet.orgeneralhelpers.graphical.table_views.WritableNumbersTable {
+- Drawable imageHint
+- Integer[][] initialValues
+# OrOneLineAutoSizeFocusableImageHintEditText createTableCell(int,int)
++ Integer getValueAtCell(int,int)
+}
+class or.nevet.orexercises.main.MultiplayerExerciseActivity {
+- char exercisesSign
+- String myFormattedEmail
+- String ownerFormattedEmail
+- Users allEmailsWithMine
+- Users allEmailsWithoutMine
+- boolean isOwner
+- LearnedExercise currentExercise
+- LearnedExercises exercises
+- GameFormatter formatter
+- ExerciseEndingNotifier endingNotifier
+- ScoreHelper scoreHelper
+- GameOperations.UserWasRightInGameManager userWasRightInGameManager
+~ ActivityResultLauncher<Intent> showGameDataBeforeNextGameActivityLauncher
+# void getExercises()
+# void saveData()
+# void startDoingExercises(LearnedExercises)
+- LearnedExercises getLearnedExercisesFromOneLearnedExercise(LearnedExercise)
+# void moveToNextState()
+- void openGameDataScreen()
+- void startGame()
+}
+class or.nevet.orgeneralhelpers.graphical.UserMessages {
+~ {static} Toast toast
++ {static} void showEmptyDialogMessage(String,Activity)
++ {static} void showButtonDialogQuestion(String,Activity,Runnable)
++ {static} void showButtonsDialogOptions(String,Activity,LinkedHashMap<String,Runnable>)
++ {static} void showToastMessage(String,Activity)
+}
+class or.nevet.orgeneralhelpers.constants.MusicConstants {
++ {static} String MUSIC_SHARED_PREFS
++ {static} String IsPlaying
+}
+class or.nevet.mathrevisorusermanager.SettingsObject {
+- Settings settings
++ boolean isLockScreenModeOn()
++ char getLockScreenExercisesSign()
+}
+abstract class or.nevet.orgeneralhelpers.music_related.InteractiveMusicSubActivity {
+# void onResume()
++ {abstract}AppCompatImageButton getMusicButton()
+}
+abstract class or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.learned_exercise_manager.ExerciseFileHelper {
+~ Context context
+~ void saveExercise(char,LearnedExercise)
+# {abstract}String getFileNameFromExerciseSign(char)
+~ LearnedExercise restoreExercise(LearnedExercises)
+}
+class or.nevet.orgeneralhelpers.graphical.MoveCutViewContainOr {
+- boolean wasMoving
+- int previousX
+- int previousY
+- View child
+- int viewWidth
+- int viewHeight
+- int containerHeight
+- int containerWidth
+- boolean wasCreated
+- Runnable onCreated
+- void listenForCreation()
++ void initView(View)
++ void askForShow()
+- void show()
++ void show(int,int)
++ boolean onInterceptTouchEvent(MotionEvent)
+- Direction whereDoesTheUserSeeMoreContentFrom(int,int)
+- Direction whereDoesTheViewNeedToMoveTo(int,int)
+- Direction getSwipeDirection(int,int)
+- boolean isConsideredClick(int,int)
+}
+enum or.nevet.orgeneralhelpers.graphical.Direction {
++  TopLeft
++  TopRight
++  BottomLeft
++  BottomRight
+}
+class or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.exercise_helpers.EnhancedExerciseHelper {
+~ String answerText
++ boolean isTheAnswerRight(OrOneLineAutoSizeUnfocusableCursorEditText)
++ void generateKnownExercise()
++ void generateRandomExercise()
++ void readExercise()
+}
+abstract class or.nevet.orgeneralhelpers.graphical.or_one_line_auto_size_edit_text.OrOneLineAutoSizeEditText {
+- {static} float fontSizeIncrease
+- String hint
++ void setOrHint(String)
++ String getOrHint()
+# void init(int)
+# void onSizeChanged(int,int,int,int)
++ void setPadding(int,int,int,int)
+# void matchFontSizeToCurrentInputAndSize()
+# void onDraw(Canvas)
+- float calculateFontSizeToFitHint()
+- float calculateFontSizeToFitHeight()
+- float calculateFontSizeToFitHintWidth()
+}
+interface or.nevet.orcloud.cloud_listeners.OrSpecificChildAddedListener {
+~ boolean isItTheCorrectChild(RealtimeField)
+~ void onCorrectChildAdded(RealtimeField)
+}
+class or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.score_helpers.ScoreHelper {
+- long score
+# void setScore(long)
++ long getScore()
++ void exerciseWasSucceeded()
++ void wrong()
+}
+class or.nevet.mathrevisorusermanager.learned_exercises_data.LearnedExercisesData {
++ HashMap<String,LearnedExerciseData> learnedExercises
++ ArrayList<Integer> leftNumbersOrderedByTheirIndexes
++ ArrayList<Integer> rightNumbersOrderedByTheirIndexes
++ String exerciseSign
+}
+abstract class or.nevet.orexercises.helpers.logic.multiplayer_method_objects.GameDataMethod {
+- GameFormatter formatter
++ GameFormatter getFormatter()
+# {abstract}MultiplayerReadyMethod getReadyUsersMethodToBeOpenedOnButtonClick()
++ void onNextButtonClicked(MusicActivity)
++ {abstract}UsersDataForPresentation runMethod()
+}
+class or.nevet.orgeneralhelpers.graphical.list_fragments.ClickableListFragment {
++ int getRecyclerViewRowId()
++ int getRecyclerViewTextViewId()
+}
+class or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.score_helpers.LeaderboardScoreHelper {
+~ AppCompatTextView scoreView
+~ Context context
++ void exerciseWasSucceeded()
++ void wrong()
+- void writeScoreOnScreen()
+}
+interface or.nevet.orgeneralhelpers.music_related.InteractiveMusicThing {
+~ AppCompatImageButton getMusicButton()
+}
+class or.nevet.orgeneralhelpers.constants.FilesConstants {
++ {static} String learningProcessFilePrefix
++ {static} String lastExerciseFilePrefix
++ {static} String userFileName
++ {static} String textFileExtension
++ {static} String revisingExerciseFilePrefix
++ {static} String settingsFileName
+}
+class or.nevet.orgeneralhelpers.background_running_related.TimerReference {
+- int timerId
+~ void setTimerId(int)
+~ int getTimerId()
+}
+class or.nevet.orexercises.helpers.logic.multiplayer_method_objects.CreationGameDataMethod {
+- LearnedExercise exercise
+- Users allUsers
+- Users allUsersWithoutMe
++ UsersDataForPresentation runMethod()
+}
+abstract class or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.exercise_helpers.ExerciseHelper {
+- LearnedExercise currentExercise
+- LearnedExercises exercises
+- Random random
+- LearnedExercise needsRevisingExercise
+- Context context
++ int getCorrectAnswer()
+# int generateRandomNumber(int)
++ LearnedExercise getCurrentExercise()
++ int getFirstNumber()
++ int getSecondNumber()
++ LearnedExercise getNeedsRevisingExercise()
+# void changeExercise(LearnedExercise)
+# void changeRevisingExercise(LearnedExercise)
+# Context getContext()
++ boolean isLearned()
++ LearnedExercises getExercises()
+}
+class or.nevet.mathrevisorusermanager.UserManagerConstants {
++ {static} String settingsIsLockScreenModeEnabled
++ {static} String settingsLockScreenExerciseSign
++ {static} HashMap<String,Object> defaultSettingsObject
++ {static} String userCreatedObjectPropertiesMapName
++ {static} String userEmailProperty
++ {static} String userUserNameProperty
++ {static} String userScoreProperty
++ {static} String userLearnedExercisesProperty
++ {static} String learnedExerciseDataMapVariableName
++ {static} String leftNumbersArrayListVariableName
++ {static} String rightNumbersArrayListVariableName
++ {static} String exerciseSignVariableName
++ {static} String leftNumberVariableName
++ {static} String rightNumberVariableName
++ {static} String resultVariableName
++ {static} String numOfLearnedVariableName
+}
+class or.nevet.orgeneralhelpers.graphical.AppGraphics {
++ {static} void onStartOfInteractiveMusic(InteractiveMusicThing)
+- {static} void changeMusicStateOnImageButtonClick(AppCompatImageButton)
++ {static} void addItemsToListActivity(ListActivity,List<CharSequence>,int,int)
++ {static} void refreshRecyclerviewAfterAddingOneItemToListActivity(ListActivity,int)
++ {static} void refreshRecyclerviewAfterRemovingOneItemToListActivity(ListActivity,int)
+}
+class or.nevet.multiplayergame.data_objects.GameUser {
+- long score
++ long getScore()
++ int compareTo(GameUser)
+}
+class or.nevet.multiplayergame.GameOperationLowLevelStages {
+~ {static} void signalToTheOtherUsersThatTheMatchingStageWasFinished(String,String,Users)
+~ {static} void initializeUserGameRoomForGame(String,Users)
+~ {static} void initializeUsersScores(String,String[])
+~ {static} void initializeUsersReadyStatesDuringGame(String)
+~ {static} void initializeUsersReadyStatesDuringMatching(String)
+~ {static} void waitForAllOfTheUsersToJoinTheRoomAsOwnerAsync(String,String,int,OrReadyUsersListener)
+~ {static} ArrayList<String> getJoinedUsers(String)
+~ {static} void waitForAllUsersToJoinAsOtherUserAsync(String,String,OrReadyUsersListener)
+~ {static} void initializeUserGameRoomForMatching(String,char)
+~ {static} void initializeUserGameRoomFields(String,char)
+~ {static} void removeAllSubCollectionsFromUserMainCollection(String)
+~ {static} LearnedExerciseData downloadExerciseFromRoom(String)
+~ {static} void signalThatIHaveJoinedTheRoom(String,String)
+~ {static} void initializeCurrentExercise(String,LearnedExerciseData)
+~ {static} ValueEventListenerStopper listenToEndGameFieldChangeAsync(String,OrValueChangedListener)
+~ {static} void signalThatIAmReadyToStartPlayingAsync(String,String)
+~ {static} boolean doesTheRoomExist(String)
+~ {static} Users getReadyUsersSync(String)
+~ {static} void waitUntilEveryoneIsReadyAndNotifyWhenSomeoneIsReadyAndUploadMyScoreAsync(String,String,Users,OrReadyUsersListener)
+~ {static} long getNumOfGamesDone(String)
+~ {static} void initializeNextExerciseAndUploadMyScoreAndWaitForAllUsersToBeReady(String,String,LearnedExerciseData,int,long,int)
+~ {static} GameUser[] getUsersWithScores(String)
+~ {static} void endTheGame(String)
+~ {static} char getExercisesSign(String)
+~ {static} boolean uploadMyScoreAndWaitForSignalFromOwnerAboutGameContinuingSync(String,String,String,long)
+~ {static} void uploadMyScoreAndThenNotifyOwnerAsync(String,String,long)
+~ {static} String getGameRoomForOwnerIdentifier(String)
+}
+class or.nevet.orexercises.helpers.logic.exercise_mechanism.high_level.math_operations.MathOperationWithLearningAndScore {
+~ EnhancedExerciseHelperWithLearningAndScoreMathOperationActivity learningAndScoreExerciseHelper
+# EnhancedExerciseHelperWithLearningAndScoreMathOperationActivity getExerciseHelper()
+# EnhancedExerciseHelperWithLearningAndScoreMathOperationActivity createExerciseHelper()
+# void wrong()
+}
+class or.nevet.orgeneralhelpers.ExternalStorage {
++ {static} String readFile(Context,String)
++ {static} void writeFile(Context,String,String)
++ {static} void saveObject(Context,String,Object)
++ {static} Object restoreObject(Context,String)
+}
+class or.nevet.orcloud.RealtimeHelper {
++ {static} void updateMultipleFieldsNoOrderSync(HashSet<RealtimeField>)
++ {static} void removeMultipleFieldsNoOrderSync(HashSet<String>)
++ {static} void updateFieldAndWaitForAFieldToChangeBeforeContinuingSync(RealtimeField,String)
++ {static} Object waitForAFieldToChangeBeforeContinuingSync(String)
++ {static} RealtimeField[] waitForNChildrenToBeAddedBeforeContinuingSync(String,int)
++ {static} void updateRealtimeFieldSync(RealtimeField)
++ {static} void removeRealtimeFieldAtLocationSync(String)
++ {static} Object getRealtimeFieldValueAtLocationSync(String)
++ {static} RealtimeField[] getRealtimeFieldChildrenValuesAtLocationSync(String)
++ {static} Object getRealtimeFieldValueAtLocationAsCustomObjectSync(String,Class<?>)
+}
+class or.nevet.orcloud.RealtimeHelper.RealtimeHelperAsync {
+- {static} Task<Void> updateRealtimeFieldAndReturnTaskAsync(RealtimeField)
+- {static} Task<Void> removeRealtimeFieldAtLocationAndReturnTaskAsync(String)
+- {static} Task<DataSnapshot> getRealtimeFieldAtLocationAsync(String)
++ {static} ValueEventListenerStopper waitForFieldToChangeAndThenDoSomethingAsync(String,OrValueChangedListener)
++ {static} ValueEventListenerStopper waitForFieldToHaveThisSpecificValueAsync(String,Object,OrValueChangedListener)
++ {static} ChildEventListenerStopper waitForNChildrenToBeInTheCollectionAndThenDoSomethingAsync(String,OrNChildrenAddedListener,int)
++ {static} ChildEventListenerStopper waitForASpecificChildToBeAddedToCollectionAndThenDoSomethingAsync(String,OrSpecificChildAddedListener)
++ {static} ChildEventListenerStopper listenToNewChildrenAsync(String,OrChildAddedListener)
++ {static} ValueEventListenerStopper listenToValueChangesAsync(String,OrValueChangedListener)
++ {static} void updateRealtimeFieldAndDoSomethingWhenCompletedAsync(RealtimeField,Runnable)
++ {static} void removeRealtimeFieldAndDoSomethingWhenCompletedAsync(String,Runnable)
++ {static} ValueEventListenerStopper waitForAFieldToBeNonExistentAndThenDoSomethingAsync(String,Runnable)
++ {static} ValueEventListenerStopper waitForAFieldToBeRemovedAndThenDoSomethingAsync(String,Runnable)
+}
+class or.nevet.orgeneralhelpers.constants.GeneralConstants {
++ {static} long secondInMillis
++ {static} long constraintAnimationDuration
++ {static} char[] englishCharactersAndNumbers
++ {static} char[] emailValidCharacters
+}
+class or.nevet.multiplayergame.GameOperations {
++ {static} void createRoom(String,int,char,OrReadyUsersListener)
++ {static} Character joinRoom(String,String,OrReadyUsersListener)
++ {static} void initializeGame(String,LearnedExerciseData,Users)
++ {static} LearnedExerciseData getReadyToPlayAsOtherUser(String,String,Users,OrReadyUsersListener)
++ {static} void getReadyToPlayAsRoomOwner(String,Users,OrReadyUsersListener)
++ {static} void waitUntilEveryoneWantsToMoveToTheNextExerciseAsync(String,String,Users,OrReadyUsersListener)
++ {static} GameExerciseResult finishCurrentExerciseAsOwnerAndGetAllScores(String,LearnedExerciseData,long,Users)
++ {static} GameExerciseResult finishCurrentExerciseAsOtherUserAndGetAllScores(String,String,long)
+}
+class or.nevet.multiplayergame.GameOperations.UserWasRightInGameManager {
+- int numberOfTimesThatIWasRight
+- int numOfExtraDigitsNeeded
++ ExerciseEndingNotifier listenToUsersRightDuringGame(String,String,UserRightDuringGameListener)
++ void notifyThatIWasRightDuringGame(String,String)
+- ValueEventListenerStopper listenToUsersRightDuringGameAndReverseUniqueIdentifiersBackToRegularOnes(String,String,UserRightDuringGameListener)
+- String getAReversibleIdentifierThatWasNeverUsedBeforeFromMyIdentifier(String)
+- String reverseUniqueIdentifier(String)
+- int getNumberOfDigitsInNumber(int)
+}
+class or.nevet.orexercises.helpers.logic.data_objects.exercise_objects.learned_exercises.LearnedExercises {
+# HashMap<String,LearnedExercise> learnedExercises
+# ArrayList<Integer> leftNumbersOrderedByTheirIndexes
+# ArrayList<Integer> rightNumbersOrderedByTheirIndexes
+- ArrayList<String> existingIndexes
+- char exerciseSign
+- Random random
++ {static} Creator<LearnedExercises> CREATOR
+- ArrayList<String> getExistingIndexes()
++ void writeToParcel(Parcel,int)
++ boolean equals(Object)
++ char getExerciseSign()
++ int getLeftNumberAt(int)
++ int getRightNumberAt(int)
++ ArrayList<Integer> getLeftNumbersOrderedArrayList()
++ ArrayList<Integer> getRightNumbersOrderedArrayList()
++ Integer[][] getAnswersMatrixWithNullWhereEmpty()
++ void iterateAllCellsByOrder(TableCellIteration)
++ void iterateExistingExercisesNoOrder(ExerciseIteration)
++ void iterateExistingIndexesNoOrder(TableCellIteration)
++ LearnedExercise getLearnedExerciseAtIndexes(int,int)
+- LearnedExercise getLearnedExerciseAtIndexesString(String)
++ LearnedExercise getLearnedExerciseByNumbers(int,int)
++ int getAmountOfLeftNumbers()
++ int getAmountOfRightNumbers()
++ int describeContents()
++ int getTotalNumOfExercises()
++ int getTotalNumOfSuccesses()
++ int getTotalNumOfLearnedWell()
++ LinkedList<LearnedExercise> getAllLearnedExercises()
++ LearnedExercise getRandomKnownExercise()
++ LearnedExercise getRandomExercise()
+}
+class or.nevet.orexercises.helpers.visual.exercise_keyboard.ExerciseKeyboard {
+- ConstraintLayout root
+- AppCompatImageButton music
+- OrOneLineAutoSizeUnfocusableCursorEditText input
+- AppCompatImageButton continueNextExercise
+- AppCompatTextView exerciseView
+- AppCompatTextView answerView
+- ConstraintLayout keyboard
+- AppCompatTextView answerTitle
+- AppCompatImageButton nextAfterAnswerShown
+- ConstraintLayout keyboardBackground
+- char exerciseSign
+- Runnable onShowKeyboard
+- ExerciseScreen exerciseScreen
+- KeyboardFunctionality keyboardFunctionality
++ void showExercise(LearnedExercise)
++ void setRoot(ConstraintLayout)
++ void showAnswer(int)
++ void showKeyboard()
++ void hideKeyboard()
++ void setMusic(AppCompatImageButton)
++ void setInput(OrOneLineAutoSizeUnfocusableCursorEditText)
++ void setContinueNextExercise(AppCompatImageButton)
++ void setExerciseView(AppCompatTextView)
++ void setAnswerView(AppCompatTextView)
++ void setKeyboard(ConstraintLayout)
++ void setAnswerTitle(AppCompatTextView)
++ void setNextAfterAnswerShown(AppCompatImageButton)
++ OrOneLineAutoSizeUnfocusableCursorEditText getInputView()
++ void disableInput()
++ void enableInput()
++ ConstraintLayout getKeyboardBackground()
++ ConstraintLayout getRoot()
++ AppCompatImageButton getMusic()
++ AppCompatImageButton getContinueNextExercise()
++ AppCompatImageButton getNextAfterAnswerShown()
++ AppCompatTextView getAnswerView()
++ AppCompatTextView getAnswerTitle()
++ void setKeyboardBackground(ConstraintLayout)
++ void signalToUser(int)
++ void stopSignalingToUser()
++ void clearInput()
++ void setOnShowKeyboardListener(Runnable)
+}
+class or.nevet.orgeneralhelpers.graphical.or_one_line_auto_size_edit_text.focusable.OrOneLineAutoSizeFocusableImageHintEditText {
+~ Drawable imageHint
+~ boolean isFocused
++ void setBackgroundResource(int)
++ void setPadding(int,int,int,int)
+# void onFocusChanged(boolean,int,Rect)
+}
+abstract class or.nevet.orgeneralhelpers.graphical.table_views.Table {
+- int numOfRows
+- int numOfColumns
+- int width
+- int height
+- int cellSizeWithLine
+- int separatorLineSize
+- TableTextViewStylist stylist
+- TextView[][] cells
++ void createTable()
+# void setCellAt(int,int,TextView)
+# TextView getCellAt(int,int)
+# void styleCell(TextView)
+# View createHorizontalTableLine()
+# View createVerticalTableLine()
+# LinearLayout createTableRow(int)
+# {abstract}TextView createTableCell(int,int)
+# int getNumOfColumns()
+# LinearLayout createTableRow(TextView[],int)
+# {abstract}Object getValueAtCell(int,int)
+}
+abstract class or.nevet.orexercises.helpers.visual.multiplayer_formatting.GameFormatter {
+- String myUnFormattedIdentifier
++ {abstract}String formatRightUser(User)
++ {abstract}String[] formatGameDataReadyUsersInBeginning(Users)
++ {abstract}String formatReadyUser(User)
++ {abstract}CharSequence[] formatScores(GameUsers)
++ {abstract}CharSequence[] formatScoresAtEnding(GameUsers)
++ {abstract}String formatIdentifier(String)
++ {abstract}String getMyFormattedIdentifier()
++ {abstract}String getWinnerLeaderboardName(GameUsers)
++ {abstract}String getMyLeaderboardName()
++ {abstract}boolean isThereATie(GameUsers)
++ {abstract}boolean isMyLeaderboardScoreBetterThanTheScoreOf(String,GameUsers)
++ String getMyUnFormattedIdentifier()
++ String getLeaderboardNameFromLeaderboardRowText(String)
+# CharSequence decorateWinnerInLeaderboard(CharSequence)
+}
+class or.nevet.orexercises.helpers.visual.AppGraphics {
++ {static} void initExerciseStatisticsTable(TableActivity,LearnedExercises)
++ {static} void initScoreExerciseActivity(PracticeExerciseActivityWithScore)
++ {static} void initExerciseKeyboard(ExerciseKeyboard,View)
++ {static} void initExerciseActivity(ExerciseActivity)
++ {static} void initExerciseService(ExerciseService)
++ {static} void initExerciseScreen(ExerciseScreen)
+}
+class or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.exercise_helpers.EnhancedExerciseHelperWithLearningMathOperationActivity {
+- MathOperationWithLearning operation
++ void restoreSavedExercisesState()
+- void restoreRevisingExercise(MathOperationWithLearning)
++ void reviseTheExerciseAgain()
+# void changeRevisingExercise(LearnedExercise)
+# void changeExercise(LearnedExercise)
++ void exerciseWasSucceeded()
++ void currentExerciseNeedsRevising()
+- void restoreLastExercise()
+- void restoreRevisingExercise()
+- void saveLastExercise()
+- void saveRevisingExercise()
+}
+interface or.nevet.orgeneralhelpers.graphical.graphical_concepts.LoadingComponent {
+~ void stopProgressBar()
+~ void restartProgressBar()
+~ ProgressBar getProgressBar()
+}
+class or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.learned_exercise_manager.LearningProcessFileHelper {
+~ {static} void saveLearningProcess(Context,char,int)
+~ {static} int restoreLearningProcess(Context,char)
+- {static} String getFileNameFromExerciseSign(char)
+}
+class or.nevet.orexercises.helpers.logic.multiplayer_method_objects.JoiningReadyMethod {
+- String ownerFormattedEmail
+- String myFormattedEmail
++ Serializable runMethod(OrReadyUsersListener)
+}
+class or.nevet.math_revisor.helpers.SignInChecking {
++ {static} void check(String,String,String,boolean,Activity)
+- {static} void userNameCheck(String,boolean,Activity)
+- {static} void checkEmpties(String,String,String,boolean,Activity)
++ {static} void checkEmailEmpty(String,Activity)
+}
+class or.nevet.orexercises.helpers.logic.data_objects.exceptions.NoKnownExercisesException {
++ String getMessage()
+}
+class or.nevet.orusermanager.UserObject {
+- User user
++ T getProperty(String)
+}
+class or.nevet.orgeneralhelpers.graphical.list_fragments.ListFragment {
+- LinkedList<CharSequence> items
+- boolean wereItemsShown
+- ProgressBar load
+- RecyclOrView recyclOrView
+- boolean keepProgressBarOn
++ void onViewCreated(View,Bundle)
++ void showList(ListActivity)
++ void initializeList(ListActivity)
++ void addItemToEndOfList(CharSequence,ListActivity)
++ void addItemToStartOfList(CharSequence,ListActivity)
++ void removeItemFromList(String,ListActivity)
++ void stopProgressBar()
++ void restartProgressBar()
++ ProgressBar getProgressBar()
++ RecyclOrView getRecyclOrView()
++ int getRecyclerViewRowId()
++ int getRecyclerViewTextViewId()
+}
+class or.nevet.orexercises.helpers.visual.multiplayer_formatting.GroupsFormatter {
+- int groupNum
++ String formatRightUser(User)
++ String[] formatGameDataReadyUsersInBeginning(Users)
++ String formatReadyUser(User)
++ String[] formatScores(GameUsers)
++ CharSequence[] formatScoresAtEnding(GameUsers)
++ String formatIdentifier(String)
++ String getMyFormattedIdentifier()
++ String getWinnerLeaderboardName(GameUsers)
++ String getMyLeaderboardName()
++ boolean isThereATie(GameUsers)
++ boolean isMyLeaderboardScoreBetterThanTheScoreOf(String,GameUsers)
+- void addGroupInsights(int,GameUser[],LinkedList<CharSequence>)
+- String getScoresInsight(long,long,String)
+- long getMyScoreFromGameUserArray(GameUser[])
+- long getGroupScore(int,GameUser[])
+- int getUserGroupNum(User)
+- String getUserEmail(User)
+}
+class or.nevet.orexercises.helpers.visual.multiplayer_list_activities.EndGameActivity {
+~ GameUsers usersAndTheirScoresSorted
+~ GameFormatter formatter
+- ImageButton back
+- AppCompatImageView title
+- ConstraintLayout root
+- AppCompatTextView congratulations
+# void onCreate(Bundle)
++ View.OnClickListener getOnClickListener(String)
++ View.OnLongClickListener getOnLongClickListener(String)
++ List<CharSequence> generateListItems()
++ ListFragment getListFragment()
+- void setGameTitle()
++ void onBackPressed()
+}
+class or.nevet.orgeneralhelpers.background_running_related.exceptions.NotEnoughSpaceForTimerException {
++ String getMessage()
+}
+abstract class or.nevet.orexercises.helpers.logic.multiplayer_method_objects.MultiplayerReadyMethod {
+}
+abstract class or.nevet.orgeneralhelpers.graphical.activity_types.ListActivity {
+- ListFragment listFragment
+- boolean wasAlreadyCreated
+# void onStart()
+# void addItemToList(CharSequence)
++ {abstract}List<CharSequence> generateListItems()
++ {abstract}ListFragment getListFragment()
+}
+abstract class or.nevet.orexercises.helpers.visual.ExerciseActivity {
++ MathOperation mathOperation
+- LearnedExercises exercises
+- AppCompatTextView timeView
+- TimerReference timerReference
+- RunOnEachInterval runOnEachInterval
+- AppCompatTextView scoreView
+# ExerciseKeyboard keyboard
+- ConstraintLayout background
+- AppCompatImageButton giveUp
+- int time
++ boolean stop
+- boolean wasTheExerciseAnswered
+- boolean isOpenedForTheFirstTime
+# void onCreate(Bundle)
+# void onStart()
+# void getExercises()
+# {abstract}void startDoingExercises(LearnedExercises)
++ void onBackPressed()
+# void onPause()
+# void saveData()
++ void startTimer()
++ void showAnswer(int)
++ void exitScreen(View)
++ void answerExercise()
+# void moveToNextState()
++ void nextAfterAnswerShown()
++ AppCompatTextView getScoreView()
++ void setTimeView(AppCompatTextView)
++ void setScoreView(AppCompatTextView)
++ AppCompatImageButton getGiveUp()
++ void setGiveUp(AppCompatImageButton)
++ ConstraintLayout getBackground()
++ void setBackground(ConstraintLayout)
+# void onDestroy()
++ ExerciseKeyboard getExerciseKeyboard()
++ AppCompatImageButton getMusicButton()
++ boolean getIsInWaitingForUserToClickOnNextProcess()
+}
+class or.nevet.orexercises.helpers.logic.multiplayer_method_objects.MultiplayerOtherUserGameDataMethod {
+- long score
++ UsersDataForPresentation runMethod()
+}
+class or.nevet.orexercises.helpers.visual.table_painter.TableCellPainter {
+- TableLayoutPainter layoutPainter
+- Context context
++ void paintOneLineTextOnCellAt(Bitmap,String,int,int,boolean)
+- int getOneLineTextHeightFromPaint(String,Paint)
+- int getTextWidthFromPaint(String,Paint)
+- int getOneLineTextHeightFromPaintBelowBaseline(String,Paint)
+- Paint createTableCellPaint(int,int,boolean)
+}
+abstract class or.nevet.orexercises.helpers.logic.multiplayer_method_objects.OtherUserGameDataMethod {
+# String myFormattedEmail
+# String ownerFormattedEmail
+# Users allUsersWithMe
+# MultiplayerReadyMethod getReadyUsersMethodToBeOpenedOnButtonClick()
+}
+abstract class or.nevet.orexercises.helpers.logic.multiplayer_method_objects.OwnerGameDataMethod {
+# LearnedExercise exercise
+# String myFormattedEmail
+# Users allUsersWithMe
+# MultiplayerReadyMethod getReadyUsersMethodToBeOpenedOnButtonClick()
+}
+class or.nevet.orexercises.helpers.logic.exercise_mechanism.high_level.math_operations.RegularMathOperation {
+# EnhancedExerciseHelper createExerciseHelper()
+# void createFirstExercise()
+}
+class or.nevet.multiplayergame.data_objects.GameExerciseResult {
+- GameUsers users
+- boolean wasTheGameEnded
++ GameUsers getUsers()
++ boolean wasTheGameEnded()
+}
+class or.nevet.orgeneralhelpers.constants.CloudConstants {
++ {static} String firestoreSubFieldSeparator
++ {static} String usersCollectionName
++ {static} String cloudLocationSeparator
++ {static} String gameCloudLocation
++ {static} String isEndGameUserGameCollectionProperty
++ {static} String currentExerciseUserGameCollectionProperty
++ {static} String exerciseNumberUserGameCollectionProperty
++ {static} String readyUsersInMatchingUserGameSubCollection
++ {static} String scoresOfUsersUserGameSubCollection
++ {static} String readyUsersDuringGameUserGameSubCollection
++ {static} String exercisesSignGameCollectionProperty
++ {static} String lastUserRightGameProperty
+}
+class or.nevet.math_revisor.main.MultiplayerActivity {
++ AppCompatImageButton back
++ Button joinRoom
++ Button createRoom
+# void onCreate(Bundle)
+}
+class or.nevet.orexercises.main.PracticeExerciseActivityWithScore {
+- TimerReference timerReference
+- AppCompatImageView internet
+- RunOnEachInterval runOnEachInterval
+- ConstraintLayout scoreLayout
+# void onCreate(Bundle)
+- void updateInternetState()
+# void onDestroy()
+# void createMathOperation(LearnedExercises)
++ void setScoreLayout(ConstraintLayout)
++ void setInternetImageView(AppCompatImageView)
++ ConstraintLayout getScoreLayout()
+}
+class or.nevet.orgeneralhelpers.music_related.AppMusicService {
+- MediaPlayer mediaPlayer
+- {static} Boolean play
+- {static} AppMusicService runningService
+- {static} Runnable afterMusicStarts
++ {static} AppMusicService getInstance()
++ void changeMusicState()
++ void resetMusic()
+- {static} void saveUserMusicPreference(Context)
+- {static} boolean getUserMusicPreference(Context)
++ {static} void initMusic(Context,Runnable)
++ void startMusicIfUserWants()
++ void resumeMusicIfUserWants()
++ void stopMusic()
++ void pauseMusic()
++ boolean isMusicPlaying()
++ void changeMusicButtonIconByMusicState(AppCompatImageButton)
++ IBinder onBind(Intent)
++ int onStartCommand(Intent,int,int)
+}
+class or.nevet.orcloud.FirebaseSynchronizer {
++ T waitForTaskToFinish(Task<T>)
+}
+abstract class or.nevet.orgeneralhelpers.music_related.MusicSubActivity {
++ void finish()
++ void onClick(View)
+}
+class or.nevet.orgeneralhelpers.LoadingHelper {
+~ boolean canAccess
+~ ProgressBar progressBar
++ void loadAndRunIfAllowed(Runnable)
++ void finishedRunning()
+}
+class or.nevet.orgeneralhelpers.background_running_related.RunOnEachInterval {
+- TimersContainer timersContainer
+- BlockingMethod blockingMethod
++ TimerReference startRunning(Runnable,long)
++ void stop(TimerReference)
++ void stopAll()
+}
+enum or.nevet.orgeneralhelpers.background_running_related.BlockingMethod {
++  RunOnUi
++  RunOnBackground
+}
+class or.nevet.math_revisor.main.SettingsActivity {
++ AppCompatImageButton back
++ AppCompatImageButton logout
++ AppCompatImageButton practiceMode
++ Spinner exercisesList
+# void onCreate(Bundle)
+}
+class or.nevet.orexercises.helpers.logic.multiplayer_method_objects.CreationReadyMethod {
+- int playersNum
+- char sign
+- String myFormattedEmail
++ Serializable runMethod(OrReadyUsersListener)
+}
+class or.nevet.orexercises.main.ExerciseMainOperations {
++ {static} void openActivityAndSendExercises(MusicActivity,ExerciseActivityOption,LearnedExercises)
++ {static} void openMultiplayerExerciseActivity(MusicActivity,LearnedExercises,String,char,Users,Users,boolean,LearnedExercise,GameFormatter)
++ {static} void openExerciseCreationTable(MusicActivity,char,int,int,boolean,boolean)
+}
+enum or.nevet.orexercises.main.ExerciseActivityOption {
++  PracticeExerciseActivityWithScore
++  PracticeExerciseActivityWithoutScore
++  ExerciseStatsTableActivity
+}
+abstract class or.nevet.orgeneralhelpers.graphical.activity_types.ButtonsListActivity {
++ {abstract}View.OnClickListener getOnClickListener(String)
++ {abstract}View.OnLongClickListener getOnLongClickListener(String)
+}
+class or.nevet.math_revisor.main.LeaderboardActivity {
++ AppCompatImageButton back
+# void onCreate(Bundle)
++ List<CharSequence> generateListItems()
++ ListFragment getListFragment()
+}
+abstract class or.nevet.orgeneralhelpers.graphical.activity_types.InteractiveMusicAlertDialogActivity {
+# void onDestroy()
++ {abstract}AlertDialog getAlertDialog()
+}
+interface or.nevet.multiplayergame.game_listeners.UserRightDuringGameListener {
+~ void userRight(User)
+}
+class or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.LearningProcessHelper {
+~ MathOperationWithLearning operation
++ void nextLearn()
+- void restoreLearn()
++ void writeLearn()
+}
+abstract class or.nevet.orusermanager.UserCreatedCloudObject {
+- HashMap<String,Object> properties
++ T getProperty(String)
++ void setProperty(String,Object)
++ HashMap<String,Object> getProperties()
++ void setProperties(HashMap<String,Object>)
+}
+class or.nevet.orexercises.helpers.logic.multiplayer_method_objects.JoiningGameDataMethod {
+- Users allUsersWithoutMe
++ UsersDataForPresentation runMethod()
+}
+class or.nevet.orexercises.helpers.logic.data_objects.exercise_objects.learned_exercises.LearnedDivExercises {
+}
+class or.nevet.math_revisor.main.SplashScreen {
++ ProgressBar progressBar
+# void onCreate(Bundle)
+# void onPause()
+# void onResume()
++ void stopProgressBar()
++ void restartProgressBar()
++ ProgressBar getProgressBar()
+}
+class or.nevet.orusermanager.SettingsManager {
+- {static} Settings settings
++ {static} SettingsObject getSettingsObject()
++ {static} void restoreSettings(Context,HashMap<String,Object>)
+- {static} void saveSettings(Context)
+~ {static} void resetSettings(Context)
++ {static} void updateSettingAndSaveInStorage(String,Object,Context)
+}
+class or.nevet.orusermanager.Settings {
+}
+interface or.nevet.orexercises.helpers.logic.interfaces.ExerciseIteration {
+~ void onIteration(String,LearnedExercise)
+}
+class or.nevet.orcloud.RealtimeField {
+- String fieldLocation
+- Object fieldValue
+- String lastLocationPathPart
++ Object getFieldValue()
++ String getFieldLocation()
++ String getLastLocationPathPart()
+}
+class or.nevet.orexercises.helpers.logic.multiplayer_method_objects.MultiplayerOwnerReadyMethod {
+- Users allUsersWithMe
+- String myFormattedEmail
++ Serializable runMethod(OrReadyUsersListener)
+}
+class or.nevet.multiplayergame.game_listeners.ExerciseEndingNotifier {
+- ValueEventListenerStopper stopper
++ void exerciseEnded()
+}
+class or.nevet.orexercises.helpers.visual.CustomExerciseTable {
+- WritableNumbersTable leftNumbers
+- WritableNumbersTable rightNumbers
+- WritableNumbersTable answers
+- TextTable signTable
+- char sign
+- void createTable()
+- int createAnswersTableId(int,int)
+- int createLeftNumbersTableId(int)
+- int createRightNumbersTable(int)
+- int createTopLeftSignTextView()
++ Integer getLeftNumberAtRow(int)
++ Integer getRightNumberAtColumn(int)
++ Integer getAnswerAtCell(int,int)
++ char getSign()
+}
+class or.nevet.orexercises.helpers.logic.exercise_mechanism.high_level.math_operations.MathOperationWithLearning {
+# int learningProcess
+- OrTTS.TTSHelper tts
+~ LearningProcessHelper learningProcessHelper
+~ boolean isWaiting
+- LearningState learningState
+# EnhancedExerciseHelperWithLearningMathOperationActivity getExerciseHelper()
+# EnhancedExerciseHelperWithLearningMathOperationActivity createExerciseHelper()
++ int getLearningProcess()
++ void setLearningProcess(int)
+# void createFirstExercise()
+# void createNextExercise()
+- void chooseWhatToDoInFailure()
+- void showLearning()
+- void hideLearning()
+- void wrongDuringSuccess()
+# void wrong()
+- void right()
+- void readExercise()
+# boolean moveToNextExercise(Runnable)
++ boolean moveToNextState(Runnable)
+# void showAnswer(int)
+# void readText(String)
++ boolean getIsInWaitingProcess()
+}
+enum or.nevet.orexercises.helpers.logic.exercise_mechanism.high_level.math_operations.LearningState {
++  Success
++  Failure
+}
+class or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.learned_exercise_manager.LastExerciseFileHelper {
+# String getFileNameFromExerciseSign(char)
+}
+class or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.learned_exercise_manager.UserLearnedExercisesBasicOperationsLowLevel {
++ {static} LearnedExercises getSpecificSavedLearnedExercisesBySign(char,Context)
++ {static} void saveSpecificLearnedExercisesToStorage(Context,LearnedExercises)
++ {static} void removeSpecificLearnedExercisesFromStorage(Context,char)
++ {static} Character[] getAllSavedSigns(Context)
++ {static} void saveAllLearnedExercisesArrayToStorage(Context,LearnedExercises[])
+}
+class or.nevet.orexercises.helpers.logic.data_objects.exercise_objects.learned_exercises.LearnedMulExercises {
+}
+class or.nevet.math_revisor.main.MainActivity {
+~ long lastClickTime
++ ImageButton multiply_button
++ ImageButton divide_button
++ ImageButton stats
++ ImageButton settings
++ AppCompatImageButton leaderboard
++ AppCompatImageButton music
++ AppCompatTextView blessing
++ ConstraintLayout navigationBar
++ LottieAnimationView info
++ AppCompatImageButton customExercises
+- AlertDialog alertDialog
++ Button multiplayer
+# void onCreate(Bundle)
++ boolean isTooFastDoubleClickThatWillCauseDoubleOpening()
+# void onStart()
++ AppCompatImageButton getMusicButton()
+- void setGreeting()
++ void onBackPressed()
++ AlertDialog getAlertDialog()
+}
+class or.nevet.orgeneralhelpers.constants.TablesConstants {
++ {static} int tableWidth
++ {static} int tableSidePadding
++ {static} int tableBackgroundColor
++ {static} int tableLayoutColor
++ {static} int tableTextColor
++ {static} int customExerciseTableCellSizeInPixels
+}
+class or.nevet.orgeneralhelpers.SharedPreferencesStorage {
++ {static} void saveBoolean(String,String,boolean,Context)
++ {static} void saveString(String,String,String,Context)
++ {static} void saveInt(String,String,int,Context)
++ {static} void saveLong(String,String,long,Context)
++ {static} void saveFloat(String,String,float,Context)
++ {static} boolean getBoolean(String,String,boolean,Context)
++ {static} String getString(String,String,String,Context)
++ {static} int getInt(String,String,int,Context)
++ {static} long getLong(String,String,long,Context)
++ {static} float getFloat(String,String,float,Context)
++ {static} void clearDatabase(String,Context)
+}
+class or.nevet.orusermanager.UserManager {
+- {static} User currentUser
++ {static} void signInNewUser(String,String,HashMap<String,Object>,Context)
++ {static} void logInExistingUser(String,String,Context)
+- {static} void signIn(User,Context)
++ {static} void signOutAndRemoveUserFromStorage(Context)
++ {static} boolean isTheCurrentUserSignedIn()
+- {static} void saveUserToStorage(Context)
++ {static} void restoreUser(Context)
++ {static} void removeUserFromMemory()
++ {static} LinkedList<UserObject> getAllUsers(String)
++ {static} void uploadUser()
+- {static} User getUserFromCloud(String)
++ {static} boolean checkIfUserNameExists(String,String)
++ {static} UserObject getCurrentUserObject(Context)
++ {static} void updateUserPropertyAndSaveToStorage(String,Object,Context)
++ {static} void sendPasswordResetEmail(String)
+}
+class or.nevet.orgeneralhelpers.graphical.or_one_line_auto_size_edit_text.unfocusable.OrOneLineAutoSizeUnfocusableCursorEditText {
+- RunOnEachInterval runOnEachInterval
+- TimerReference timerReference
+- boolean theCursorAppears
+- boolean isMyChange
+- boolean isCursorRunning
+# void init(int)
+- void listenToTextChanges()
++ void startCursor()
+- void stopCursor()
++ String getString()
++ void emulateNoFocus()
++ void emulateUserFocus()
+}
+class or.nevet.multiplayergame.data_objects.Users {
+- User[] users
++ User[] getUsers()
+}
+class or.nevet.orgeneralhelpers.InternetManager {
++ {static} boolean isConnectedToInternet(Context)
+}
+class or.nevet.orcloud.FirestoreHelper {
++ {static} List<DocumentSnapshot> getAllDocumentsInCollectionDescendingOrder(String,String)
++ {static} void uploadDocumentByMap(String,Map<String,Object>)
++ {static} void uploadDocumentByObject(String,Object)
++ {static} DocumentSnapshot getDocumentFromCloud(String)
++ {static} List<DocumentSnapshot> getDocumentsInCollectionWithField(String,String,String)
+}
+interface or.nevet.orexercises.helpers.logic.interfaces.Learnable {
+~ boolean isLearned()
+}
+class or.nevet.multiplayergame.data_objects.GameUsers {
++ GameUser[] getUsers()
+}
+class or.nevet.orcloud.CloudFieldNamingHelper {
++ {static} String replaceDotsWithSpaces(String)
++ {static} String restoreDotsAfterReplacementWithSpaces(String)
+}
+class or.nevet.math_revisor.helpers.AppGraphics {
++ {static} void initMain(MainActivity)
++ {static} void initSplashScreen(SplashScreen)
++ {static} void initCustomExerciseCreation(CustomExerciseCreationActivity)
++ {static} void initManageCustomExercises(ManageCustomExercisesActivity)
++ {static} void initLeaderboard(LeaderboardActivity)
++ {static} void initInfo(AboutActivity)
++ {static} void initSignIn(SignIn)
++ {static} void initSettings(SettingsActivity)
++ {static} void changePracticeModeButtonIconByPracticeModeState(AppCompatImageButton,Context)
++ {static} void initStatistics(StatisticsActivity)
+}
+abstract class or.nevet.orgeneralhelpers.music_related.MusicActivity {
+- ActivityState lastState
+- boolean canMoveToAnotherActivity
+# void onCreate(Bundle)
++ void finish()
+# void onPause()
+# void onStop()
++ void onAnotherActivityOpenedFromThisActivity()
++ boolean canMoveToAnotherActivity()
+# void onResume()
++ ActivityState getLastState()
++ void onBackPressed()
+}
+enum or.nevet.orgeneralhelpers.music_related.ActivityState {
++  Paused
++  Started
+}
+
+
+or.nevet.orgeneralhelpers.graphical.activity_types.ButtonsListActivity <|-- or.nevet.orexercises.main.CreateMultiplayerRoomActivity
+or.nevet.orgeneralhelpers.music_related.MusicSubActivity <|-- or.nevet.math_revisor.main.CustomExerciseCreationActivity
+or.nevet.orgeneralhelpers.music_related.MusicSubActivity <|-- or.nevet.math_revisor.main.AboutActivity
+or.nevet.orexercises.helpers.visual.ExerciseActivity <|-- or.nevet.orexercises.main.LearningExerciseActivity
+or.nevet.orexercises.helpers.logic.data_objects.exceptions.Exception <|-- or.nevet.orexercises.helpers.logic.data_objects.exceptions.StopExerciseException
+or.nevet.orgeneralhelpers.music_related.MusicSubActivity <|-- or.nevet.orexercises.main.TableActivity
+androidx.appcompat.app.AppCompatActivity <|-- or.nevet.math_revisor.main.SignIn
+or.nevet.orexercises.helpers.logic.interfaces.Learnable <|.. or.nevet.orexercises.helpers.logic.data_objects.exercise_objects.learned_exercise.LearnedExercise
+android.os.Parcelable <|.. or.nevet.orexercises.helpers.logic.data_objects.exercise_objects.learned_exercise.LearnedExercise
+java.io.Serializable <|.. or.nevet.orexercises.helpers.logic.data_objects.exercise_objects.learned_exercise.LearnedExercise
+or.nevet.orgeneralhelpers.graphical.activity_types.ListActivity <|-- or.nevet.orexercises.helpers.visual.multiplayer_list_activities.ReadyUsersListActivity
+or.nevet.orgeneralhelpers.music_related.MusicSubActivity <|-- or.nevet.orexercises.main.JoinMultiplayerRoomActivity
+or.nevet.orexercises.helpers.visual.multiplayer_formatting.GameFormatter <|-- or.nevet.orexercises.helpers.visual.multiplayer_formatting.AllVSAllFormatter
+or.nevet.orgeneralhelpers.music_related.MusicSubActivity <|-- or.nevet.orexercises.main.ExerciseCreationTableActivity
+java.io.Serializable <|.. or.nevet.orexercises.helpers.logic.multiplayer_method_objects.ReadyUsersMethod
+java.io.Serializable <|.. or.nevet.mathrevisorusermanager.learned_exercises_data.LearnedExerciseData
+java.io.Serializable <|.. or.nevet.mathrevisorusermanager.User
+java.io.Serializable <|.. or.nevet.multiplayergame.data_objects.User
+or.nevet.orgeneralhelpers.graphical.recycler_view.Adapter <|-- or.nevet.orgeneralhelpers.graphical.recycler_view.RecyclOrViewAdaptOr
+or.nevet.orgeneralhelpers.graphical.recycler_view.RecyclOrViewAdaptOr +.. or.nevet.orgeneralhelpers.graphical.recycler_view.RecyclOrViewAdaptOr.ViewHoldOr
+or.nevet.orgeneralhelpers.graphical.recycler_view.ViewHolder <|-- or.nevet.orgeneralhelpers.graphical.recycler_view.RecyclOrViewAdaptOr.ViewHoldOr
+or.nevet.orusermanager.UserCreatedCloudObject <|-- or.nevet.orusermanager.User
+or.nevet.orgeneralhelpers.graphical.activity_types.ListActivity <|-- or.nevet.orexercises.helpers.visual.multiplayer_list_activities.ShowGameDataBeforeNextGame
+or.nevet.orexercises.main.LearningExerciseActivity <|-- or.nevet.orexercises.main.PracticeExerciseActivityWithoutScore
+or.nevet.orgeneralhelpers.music_related.InteractiveMusicThing <|.. or.nevet.orgeneralhelpers.music_related.InteractiveMusicActivity
+or.nevet.orgeneralhelpers.music_related.MusicActivity <|-- or.nevet.orgeneralhelpers.music_related.InteractiveMusicActivity
+or.nevet.orgeneralhelpers.graphical.or_one_line_auto_size_edit_text.OrOneLineAutoSizeEditText <|-- or.nevet.orgeneralhelpers.graphical.or_one_line_auto_size_edit_text.focusable.OrOneLineAutoSizeFocusableEditText
+or.nevet.orexercises.helpers.logic.interfaces.ExerciseScreen <|.. or.nevet.orexercises.main.ExerciseService
+android.accessibilityservice.AccessibilityService <|-- or.nevet.orexercises.main.ExerciseService
+java.io.Serializable <|.. or.nevet.mathrevisorusermanager.Settings
+or.nevet.orgeneralhelpers.music_related.MusicSubActivity <|-- or.nevet.math_revisor.main.StatisticsActivity
+android.content.BroadcastReceiver <|-- or.nevet.orexercises.helpers.logic.exercise_mechanism.high_level.PowerReceiver
+or.nevet.orgeneralhelpers.graphical.activity_types.ButtonsListActivity <|-- or.nevet.math_revisor.main.ManageCustomExercisesActivity
+or.nevet.orgeneralhelpers.graphical.or_one_line_auto_size_edit_text.OrOneLineAutoSizeEditText <|-- or.nevet.orgeneralhelpers.graphical.or_one_line_auto_size_edit_text.unfocusable.OrOneLineAutoSizeUnfocusableEditText
+androidx.recyclerview.widget.RecyclerView <|-- or.nevet.orgeneralhelpers.graphical.recycler_view.RecyclOrView
+or.nevet.orgeneralhelpers.graphical.table_views.Table <|-- or.nevet.orgeneralhelpers.graphical.table_views.TextTable
+or.nevet.orgeneralhelpers.tts.OrTTS +.. or.nevet.orgeneralhelpers.tts.OrTTS.TTSHelper
+or.nevet.orexercises.helpers.logic.multiplayer_method_objects.OwnerGameDataMethod <|-- or.nevet.orexercises.helpers.logic.multiplayer_method_objects.MultiplayerOwnerGameDataMethod
+or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.exercise_helpers.EnhancedExerciseHelperWithLearningMathOperationActivity <|-- or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.exercise_helpers.EnhancedExerciseHelperWithLearningAndScoreMathOperationActivity
+or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.learned_exercise_manager.ExerciseFileHelper <|-- or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.learned_exercise_manager.RevisingExerciseFileHelper
+or.nevet.orexercises.helpers.logic.multiplayer_method_objects.MultiplayerReadyMethod <|-- or.nevet.orexercises.helpers.logic.multiplayer_method_objects.MultiplayerOtherUserReadyMethod
+java.io.Serializable <|-- or.nevet.multiplayergame.game_listeners.OrReadyUsersListener
+or.nevet.orgeneralhelpers.graphical.table_views.Table <|-- or.nevet.orgeneralhelpers.graphical.table_views.WritableNumbersTable
+or.nevet.orexercises.helpers.visual.ExerciseActivity <|-- or.nevet.orexercises.main.MultiplayerExerciseActivity
+or.nevet.orgeneralhelpers.music_related.InteractiveMusicThing <|.. or.nevet.orgeneralhelpers.music_related.InteractiveMusicSubActivity
+or.nevet.orgeneralhelpers.music_related.MusicSubActivity <|-- or.nevet.orgeneralhelpers.music_related.InteractiveMusicSubActivity
+android.widget.LinearLayout <|-- or.nevet.orgeneralhelpers.graphical.MoveCutViewContainOr
+or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.exercise_helpers.ExerciseHelper <|-- or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.exercise_helpers.EnhancedExerciseHelper
+or.nevet.orgeneralhelpers.graphical.or_one_line_auto_size_edit_text.AppCompatEditText <|-- or.nevet.orgeneralhelpers.graphical.or_one_line_auto_size_edit_text.OrOneLineAutoSizeEditText
+java.io.Serializable <|.. or.nevet.mathrevisorusermanager.learned_exercises_data.LearnedExercisesData
+java.io.Serializable <|.. or.nevet.orexercises.helpers.logic.multiplayer_method_objects.GameDataMethod
+or.nevet.orgeneralhelpers.graphical.list_fragments.ListFragment <|-- or.nevet.orgeneralhelpers.graphical.list_fragments.ClickableListFragment
+or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.score_helpers.ScoreHelper <|-- or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.score_helpers.LeaderboardScoreHelper
+or.nevet.orexercises.helpers.logic.multiplayer_method_objects.OwnerGameDataMethod <|-- or.nevet.orexercises.helpers.logic.multiplayer_method_objects.CreationGameDataMethod
+or.nevet.multiplayergame.data_objects.Comparable <|.. or.nevet.multiplayergame.data_objects.GameUser
+or.nevet.multiplayergame.data_objects.User <|-- or.nevet.multiplayergame.data_objects.GameUser
+or.nevet.orexercises.helpers.logic.exercise_mechanism.high_level.math_operations.MathOperationWithLearning <|-- or.nevet.orexercises.helpers.logic.exercise_mechanism.high_level.math_operations.MathOperationWithLearningAndScore
+or.nevet.orcloud.RealtimeHelper +.. or.nevet.orcloud.RealtimeHelper.RealtimeHelperAsync
+or.nevet.multiplayergame.GameOperations +.. or.nevet.multiplayergame.GameOperations.UserWasRightInGameManager
+android.os.Parcelable <|.. or.nevet.orexercises.helpers.logic.data_objects.exercise_objects.learned_exercises.LearnedExercises
+java.io.Serializable <|.. or.nevet.orexercises.helpers.logic.data_objects.exercise_objects.learned_exercises.LearnedExercises
+or.nevet.orgeneralhelpers.graphical.or_one_line_auto_size_edit_text.focusable.OrOneLineAutoSizeFocusableEditText <|-- or.nevet.orgeneralhelpers.graphical.or_one_line_auto_size_edit_text.focusable.OrOneLineAutoSizeFocusableImageHintEditText
+android.widget.LinearLayout <|-- or.nevet.orgeneralhelpers.graphical.table_views.Table
+java.io.Serializable <|.. or.nevet.orexercises.helpers.visual.multiplayer_formatting.GameFormatter
+or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.exercise_helpers.EnhancedExerciseHelper <|-- or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.exercise_helpers.EnhancedExerciseHelperWithLearningMathOperationActivity
+or.nevet.orexercises.helpers.logic.multiplayer_method_objects.ReadyUsersMethod <|-- or.nevet.orexercises.helpers.logic.multiplayer_method_objects.JoiningReadyMethod
+or.nevet.orexercises.helpers.logic.data_objects.exceptions.Exception <|-- or.nevet.orexercises.helpers.logic.data_objects.exceptions.NoKnownExercisesException
+or.nevet.orgeneralhelpers.graphical.graphical_concepts.LoadingComponent <|.. or.nevet.orgeneralhelpers.graphical.list_fragments.ListFragment
+androidx.fragment.app.Fragment <|-- or.nevet.orgeneralhelpers.graphical.list_fragments.ListFragment
+or.nevet.orexercises.helpers.visual.multiplayer_formatting.GameFormatter <|-- or.nevet.orexercises.helpers.visual.multiplayer_formatting.GroupsFormatter
+or.nevet.orgeneralhelpers.graphical.activity_types.ButtonsListActivity <|-- or.nevet.orexercises.helpers.visual.multiplayer_list_activities.EndGameActivity
+or.nevet.orgeneralhelpers.background_running_related.exceptions.RuntimeException <|-- or.nevet.orgeneralhelpers.background_running_related.exceptions.NotEnoughSpaceForTimerException
+or.nevet.orexercises.helpers.logic.multiplayer_method_objects.ReadyUsersMethod <|-- or.nevet.orexercises.helpers.logic.multiplayer_method_objects.MultiplayerReadyMethod
+or.nevet.orgeneralhelpers.music_related.MusicSubActivity <|-- or.nevet.orgeneralhelpers.graphical.activity_types.ListActivity
+or.nevet.orexercises.helpers.logic.interfaces.ExerciseScreen <|.. or.nevet.orexercises.helpers.visual.ExerciseActivity
+or.nevet.orgeneralhelpers.music_related.InteractiveMusicSubActivity <|-- or.nevet.orexercises.helpers.visual.ExerciseActivity
+or.nevet.orexercises.helpers.logic.multiplayer_method_objects.OtherUserGameDataMethod <|-- or.nevet.orexercises.helpers.logic.multiplayer_method_objects.MultiplayerOtherUserGameDataMethod
+or.nevet.orexercises.helpers.logic.multiplayer_method_objects.GameDataMethod <|-- or.nevet.orexercises.helpers.logic.multiplayer_method_objects.OtherUserGameDataMethod
+or.nevet.orexercises.helpers.logic.multiplayer_method_objects.GameDataMethod <|-- or.nevet.orexercises.helpers.logic.multiplayer_method_objects.OwnerGameDataMethod
+or.nevet.orexercises.helpers.logic.exercise_mechanism.high_level.math_operations.MathOperation <|-- or.nevet.orexercises.helpers.logic.exercise_mechanism.high_level.math_operations.RegularMathOperation
+or.nevet.orgeneralhelpers.music_related.MusicSubActivity <|-- or.nevet.math_revisor.main.MultiplayerActivity
+or.nevet.orexercises.main.LearningExerciseActivity <|-- or.nevet.orexercises.main.PracticeExerciseActivityWithScore
+android.app.Service <|-- or.nevet.orgeneralhelpers.music_related.AppMusicService
+or.nevet.orgeneralhelpers.music_related.OnClickListener <|.. or.nevet.orgeneralhelpers.music_related.MusicSubActivity
+or.nevet.orgeneralhelpers.music_related.MusicActivity <|-- or.nevet.orgeneralhelpers.music_related.MusicSubActivity
+or.nevet.orgeneralhelpers.music_related.MusicSubActivity <|-- or.nevet.math_revisor.main.SettingsActivity
+or.nevet.orexercises.helpers.logic.multiplayer_method_objects.ReadyUsersMethod <|-- or.nevet.orexercises.helpers.logic.multiplayer_method_objects.CreationReadyMethod
+or.nevet.orgeneralhelpers.graphical.activity_types.ListActivity <|-- or.nevet.orgeneralhelpers.graphical.activity_types.ButtonsListActivity
+or.nevet.orgeneralhelpers.graphical.activity_types.ListActivity <|-- or.nevet.math_revisor.main.LeaderboardActivity
+or.nevet.orgeneralhelpers.music_related.InteractiveMusicActivity <|-- or.nevet.orgeneralhelpers.graphical.activity_types.InteractiveMusicAlertDialogActivity
+java.io.Serializable <|.. or.nevet.orusermanager.UserCreatedCloudObject
+or.nevet.orexercises.helpers.logic.multiplayer_method_objects.OtherUserGameDataMethod <|-- or.nevet.orexercises.helpers.logic.multiplayer_method_objects.JoiningGameDataMethod
+or.nevet.orexercises.helpers.logic.data_objects.exercise_objects.learned_exercises.LearnedExercises <|-- or.nevet.orexercises.helpers.logic.data_objects.exercise_objects.learned_exercises.LearnedDivExercises
+or.nevet.orgeneralhelpers.graphical.graphical_concepts.LoadingComponent <|.. or.nevet.math_revisor.main.SplashScreen
+androidx.appcompat.app.AppCompatActivity <|-- or.nevet.math_revisor.main.SplashScreen
+or.nevet.orusermanager.UserCreatedCloudObject <|-- or.nevet.orusermanager.Settings
+or.nevet.orexercises.helpers.logic.multiplayer_method_objects.MultiplayerReadyMethod <|-- or.nevet.orexercises.helpers.logic.multiplayer_method_objects.MultiplayerOwnerReadyMethod
+androidx.constraintlayout.widget.ConstraintLayout <|-- or.nevet.orexercises.helpers.visual.CustomExerciseTable
+or.nevet.orexercises.helpers.logic.exercise_mechanism.high_level.math_operations.MathOperation <|-- or.nevet.orexercises.helpers.logic.exercise_mechanism.high_level.math_operations.MathOperationWithLearning
+or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.learned_exercise_manager.ExerciseFileHelper <|-- or.nevet.orexercises.helpers.logic.exercise_mechanism.low_level.learned_exercise_manager.LastExerciseFileHelper
+or.nevet.orexercises.helpers.logic.data_objects.exercise_objects.learned_exercises.LearnedExercises <|-- or.nevet.orexercises.helpers.logic.data_objects.exercise_objects.learned_exercises.LearnedMulExercises
+or.nevet.orgeneralhelpers.graphical.activity_types.InteractiveMusicAlertDialogActivity <|-- or.nevet.math_revisor.main.MainActivity
+or.nevet.orgeneralhelpers.graphical.or_one_line_auto_size_edit_text.unfocusable.OrOneLineAutoSizeUnfocusableEditText <|-- or.nevet.orgeneralhelpers.graphical.or_one_line_auto_size_edit_text.unfocusable.OrOneLineAutoSizeUnfocusableCursorEditText
+java.io.Serializable <|.. or.nevet.multiplayergame.data_objects.Users
+or.nevet.multiplayergame.data_objects.Users <|-- or.nevet.multiplayergame.data_objects.GameUsers
+androidx.appcompat.app.AppCompatActivity <|-- or.nevet.orgeneralhelpers.music_related.MusicActivity
+@enduml

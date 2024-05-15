@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="OrOneLineAutoSizeEditText">
+        <attr name="orHint" format="string" />
+        <attr name="orInputType" format="enum">
+            <enum name="Text" value="1" />
+            <enum name="Numbers" value="2" />
+            <enum name="Password" value="128" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="OrOneLineAutoSizeFocusableImageHintEditText">
+        <attr name="orImageHint" format="reference" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,53 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+}
+
+android {
+    signingConfigs {
+        release {
+            storeFile file('C:\\key\\keyStore\\math_revisor.jks')
+            storePassword 'Math_Revisor'
+            keyAlias 'math_revisor'
+            keyPassword 'Math_Revisor'
+        }
+    }
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "or.nevet.math_revisor"
+        minSdk 29
+        targetSdk 33
+        versionCode 4
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.release
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+
+dependencies {
+    implementation platform('com.google.firebase:firebase-bom:30.2.0')
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.firebase:firebase-auth:21.1.0'
+    implementation "com.airbnb.android:lottie:5.2.0"
+    implementation project(path: ':OrLibraries:OrAppParts:OrExercises')
+    implementation project(path: ':OrLibraries:OrHelpers:OrGeneralHelpers')
+    implementation project(path: ':OrLibraries:OrAppParts:MathRevisOrUserManager')
+    implementation project(path: ':OrLibraries:OrAppParts:MultiplayerGameCloudLogic')
+}

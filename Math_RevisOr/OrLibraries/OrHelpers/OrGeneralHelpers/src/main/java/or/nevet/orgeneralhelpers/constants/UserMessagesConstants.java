@@ -1,0 +1,51 @@
+package or.nevet.orgeneralhelpers.constants;
+
+public class UserMessagesConstants {
+    public static final String areYouSureThatYouWantToRemoveThisExercise = "Are you sure that you want to remove this exercise?";
+    public static final String areYouSureThatYouWantSoMuchExercises = "Are you sure that you want to fill more than 900 exercises? It will take you basically forever and it will cause lags...";
+    public static final String chooseAnOption = "Choose an option:";
+    public static final String allFieldsMustBeFilled = "You need to fill all of the fields";
+    public static final String signNeedsToBeOneChar = "The sign has to be only one character";
+    public static final String signCanNotBeNumber = "The sign can not be a number";
+    public static final String thisSignAlreadyExists = "This sign already exists. Try another";
+    public static final String exercisesAddedSuccessfully = "The exercise was saved successfully!";
+    public static final String canNotHaveMultipleEqualLeftNumbers = "can't have multiple equal left numbers";
+    public static final String canNotHaveMultipleEqualRightNumbers = "can't have multiple equal right numbers";
+    public static final String smsText = "שלום אור, אני משתמש באפליקציה שלך ויש לי משהו להגיד לך:";
+    public static final String thereWasAnError = "There was an error";
+    public static final String passwordResetSucceeded = "Password reset succeeded! Check your email. Do not forget to check the spam folder! After the reset, reopen the app.";
+    public static final String forgotAfterAddingExerciseActivity = "I (Or Nevet) forgot to change the 'openActivityAndSendExercises' method, after adding a new option for an exercise activity!";
+    public static final String forgotAfterAddingBlockingMethod = "I (Or Nevet) forgot to change the 'startRunning' method, after adding a new option for a blocking method!";
+    public static final String forgotAfterAddingExerciseState = "I (Or Nevet) forgot to change the 'moveToNextState' method, after adding a new option for an exercise state!";
+    public static final String notEnoughSpaceForTimer = "There is not enough space for the new timer in this runOnEachInterval object. Consider extending the initial capacity in its constructor while creating him";
+    public static final String wrongAnswer = "wrong, try again";
+    public static final String haveToEnterUserName = "You have to enter a username!";
+    public static final String haveToEnterPassword = "You have to enter a password!";
+    public static final String haveToEnterEmail = "You have to enter an email!";
+    public static final String userNameAlreadyExists = "This username already exists. Choose another one";
+    public static final String accountUsed = "This account is already used by another user";
+    public static final String wrongCredential = "There was a problem with one of your credentials. Try again";
+    public static final String wrongEmail = "There is no user with that email";
+    public static final String weakPassword = "This password is too weak. Please choose another one";
+    public static final String theUserIsNotSignedInSoImpossibleToUploadScore = "The user is not signed in. It is not possible to upload its score";
+    public static final String roomOwnerStartedAnotherGame = "The room owner started another game, so he will never connect.";
+    public static final String doesNotSupportTTS = "Your device does not support tts so he can't use the app. Try to update/install google's speech services (usually called 'speech services by google)";
+    public static final String calledShowBeforeInitView = "You have to call initView before showing the view using the container.";
+    public static final String currentUserEmailWasNotInArray = "The current user was not found in the GameUser array when the scores should be shown. This is a bug. All of the emails should be in this array - including the email of the current user.";
+    public static final String allLeftAndRightNumbersMustBeFilled = "all of the left and right numbers must be filled";
+    public static final String youMustFillAtLeastOneAnswer = "you must fill at least one answer";
+    public static final String ttsNotReady = "The tts is not ready. Make sure that you called createTTS and waited for it to finish!";
+    public static final String allowAccessibilityService = "Do you want to allow the accessibility service? It has to be allowed for the exercise in the lock screen to work... (This is needed to allow the app to show it. The app will not show it unless you also choose it in the app's settings)";
+    public static final String emailNotValid = "This is not a valid email in this app";
+    public static final String emailNotValidInSignIn = "This is not a valid email in this app. Try an email without special characters.";
+    public static final String roomDoesNotExist = "This room was never created";
+    public static final String usernameNotValid = "This is not a valid username in this app. Try another one";
+    public static final String theNumberIsTooBig = "One of the numbers are too big";
+    public static final String doYouWantToSendMessage = "Are you sure that you want to send a message to Or Nevet?";
+    public static final String draftSMSText = "רציתי להגיד לך ש";
+    public static final String userDoesNotExistInStorage = "The user does not exist in storage";
+    public static final String youHaveNoInternet = "You have no internet. Connect to the internet and try again.";
+    public static final String notSignedUp = "The user is not signed up, so he can not log in.";
+    public static final String youAreNotSignedUp = "you are not signed up, so you can not log in. Sign up first.";
+
+}

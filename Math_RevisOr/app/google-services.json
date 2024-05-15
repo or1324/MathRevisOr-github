@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1298561991",
+    "project_id": "math-revisor",
+    "storage_bucket": "math-revisor.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1298561991:android:5ed8ba884b974afeb537e2",
+        "android_client_info": {
+          "package_name": "or.nevet.math_revisor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1298561991-7b47g9cksn6ta042pgvuqposonk6ls08.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "or.nevet.math_revisor",
+            "certificate_hash": "e5f521af3828caff1ac5b021fcfa55aa1ea5bd44"
+          }
+        },
+        {
+          "client_id": "1298561991-ho7tu3tkv1gqe4lrbdvjfvrbbdt82tvt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "or.nevet.math_revisor",
+            "certificate_hash": "7d4288aa3fec13f958b12e5394ea32c9a455962d"
+          }
+        },
+        {
+          "client_id": "1298561991-dtuehbfm9873oap1iv7p8hol5jua2f5u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSlca8LwugWQOJqKUf3_hbR6UZHQsDiGE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1298561991-dtuehbfm9873oap1iv7p8hol5jua2f5u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

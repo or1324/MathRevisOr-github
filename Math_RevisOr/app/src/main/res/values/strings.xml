@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MathRevisOr</string>
+    <string name="my_phone_number">+972549181479</string>
+    <string name="reset_password_text"><u>to reset password, write your email and click here</u></string>
+    <string name="app_tutorial"><u>App Tutorial:</u></string>
+</resources>

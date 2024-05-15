@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibilityName">Math RevisOr\'s Accessibility Service</string>
+    <string name="enter_answer">write your answer here</string>
+    <string-array name="multiplayer_dropdown_options">
+        <item>group 1</item>
+        <item>group 2</item>
+    </string-array>
+</resources>
